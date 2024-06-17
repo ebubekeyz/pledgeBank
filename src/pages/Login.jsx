@@ -88,7 +88,6 @@ const Login = () => {
     const formAlert = document.querySelector('.form-alert');
 
     if (otp == user.otp) {
-      popup.classList.remove('showPopup');
       formAlert.textContent = `Login Successful`;
       formAlert.style.textAlign = 'center';
       formAlert.style.color = 'var(--clr-primary-7)';
@@ -100,7 +99,7 @@ const Login = () => {
         formAlert.style.background = 'none';
         formAlert.style.background = 'transparent';
       }, 3000);
-
+      popup.classList.remove('showPopup');
       return navigate('/dashboard');
     } else {
       formAlert.textContent = `OTP Verification Failed`;

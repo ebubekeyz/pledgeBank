@@ -83,26 +83,26 @@ const Landing = () => {
           <h4>Services</h4>
 
           <div className="icons">
-            <a href="/dashboard/sendMoney" className="inner-icon">
+            <Link to="/dashboard/sendMoney" className="inner-icon">
               <FaMoneyBill className="ico" />
               <p>Send Money</p>
-            </a>
+            </Link>
 
-            <a href="/dashboard/transaction" className="inner-icon">
+            <Link to="/dashboard/transaction" className="inner-icon">
               <FaClock className="ico" />
               <p>Transactions</p>
-            </a>
+            </Link>
 
             {user.role === 'admin' || user.role === 'owner' ? (
-              <a href="/dashboard/adminDeposit" className="inner-icon">
+              <Link to="/dashboard/adminDeposit" className="inner-icon">
                 <FaClock className="ico" />
                 <p>Deposit</p>
-              </a>
+              </Link>
             ) : (
-              <a href="/dashboard/deposit" className="inner-icon">
+              <Link to="/dashboard/deposit" className="inner-icon">
                 <FaClock className="ico" />
                 <p>Deposit</p>
-              </a>
+              </Link>
             )}
           </div>
         </article>

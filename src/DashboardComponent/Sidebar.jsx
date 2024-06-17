@@ -23,7 +23,7 @@ import {
 } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../features/user/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 
 const Sidebar = ({ onClick, onClick2 }) => {
@@ -52,50 +52,41 @@ const Sidebar = ({ onClick, onClick2 }) => {
 
             <li>
               <FaHome className="home" />
-              <a href="/dashboard">home</a>
+              <Link to="/dashboard">home</Link>
             </li>
             <li>
               <FaPerson className="person" />
-              <a href="/dashboard/accountInfo">Account</a>
+              <Link to="/dashboard/accountInfo">Account</Link>
             </li>
 
             {user.role === 'admin' || user.role === 'owner' ? (
               <li>
                 <FaMoneyBillTransfer className="question" />
-                <a href="/dashboard/withdraw">Withdraw</a>
+                <Link to="/dashboard/withdraw">Withdraw</Link>
               </li>
             ) : (
               <li>
                 <FaMoneyBillTransfer className="question" />
-                <a href="/dashboard/sendMoney">Send Money</a>
+                <Link to="/dashboard/sendMoney">Send Money</Link>
               </li>
             )}
 
             {user.role === 'admin' || user.role === 'owner' ? (
               <li>
                 <FaMoneyBills className="phone" />
-                <a href="/dashboard/adminDeposit">Deposit</a>
+                <Link to="/dashboard/adminDeposit">Deposit</Link>
               </li>
             ) : (
               <li>
                 <FaMoneyBills className="phone" />
-                <a href="/dashboard/deposit">Deposit</a>
+                <Link to="/dashboard/deposit">Deposit</Link>
               </li>
             )}
 
             {user.role === 'admin' || user.role === 'owner' ? (
               <li>
                 <FaMoneyBills className="phone" />
-                <a href="/dashboard/set-transfer-details">Transfer Info</a>
-              </li>
-            ) : (
-              ''
-            )}
-
-            {user.role === 'admin' || user.role === 'owner' ? (
-              <li>
-                <FiSettings className="phone" />
-                <a href="/dashboard/notificationMessage">Notification</a>
+                <Link to="/dashboard/set-transfer-details">Transfer Info</Link>
               </li>
             ) : (
               ''
@@ -104,7 +95,16 @@ const Sidebar = ({ onClick, onClick2 }) => {
             {user.role === 'admin' || user.role === 'owner' ? (
               <li>
                 <FiSettings className="phone" />
-                <a href="/dashboard/siteMap">Site Map</a>
+                <Link to="/dashboard/notificationMessage">Notification</Link>
+              </li>
+            ) : (
+              ''
+            )}
+
+            {user.role === 'admin' || user.role === 'owner' ? (
+              <li>
+                <FiSettings className="phone" />
+                <Link to="/dashboard/siteMap">Site Map</Link>
               </li>
             ) : (
               ''
@@ -112,13 +112,13 @@ const Sidebar = ({ onClick, onClick2 }) => {
 
             <li>
               <FaReceipt className="service" />
-              <a href="/dashboard/transaction">Transactions</a>
+              <Link to="/dashboard/transaction">Transactions</Link>
             </li>
 
             {user.role === 'admin' || user.role === 'owner' ? (
               <li>
                 <FaEdit className="service" />
-                <a href="/dashboard/addUser">Add User</a>
+                <Link to="/dashboard/addUser">Add User</Link>
               </li>
             ) : (
               ''
@@ -127,7 +127,7 @@ const Sidebar = ({ onClick, onClick2 }) => {
             {user.role === 'admin' || user.role === 'owner' ? (
               <li>
                 <FaEdit className="service" />
-                <a href="/dashboard/update">Update</a>
+                <Link to="/dashboard/update">Update</Link>
               </li>
             ) : (
               ''
