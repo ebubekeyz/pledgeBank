@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Wrapper from '../assets/DashboardWrapper/SiteMap';
 
 const SiteMap = () => {
@@ -6,35 +7,35 @@ const SiteMap = () => {
       <div className="siteMap">
         <article className="site-map">
           <h4>Main Site Link</h4>
-          <a href="https://pledge-bank.com">https://pledge-bank.com</a>
+          <Link to="/"></Link>
         </article>
 
         <article className="site-map">
-          <h4>Site Map</h4>
-          <a href="https://pledge-bank.com/dashboard/siteMap">
-            https://pledge-bank.com/dashboard/siteMap
-          </a>
+          <h4>View Site Map</h4>
+          <Link to="/dashboard/siteMap" className="link">
+            Site Map
+          </Link>
         </article>
 
         <article className="site-map">
           <h4>Link to Register Account</h4>
-          <a href="https://pledge-bank.com/register">
-            https://pledge-bank.com/register
-          </a>
+          <Link to="/register" className="link">
+            Register
+          </Link>
         </article>
 
         <article className="site-map">
           <h4>Link to Login Account</h4>
-          <a href="https://pledge-bank.com/login">
-            https://pledge-bank.com/login
-          </a>
+          <Link to="/login" className="link">
+            Login
+          </Link>
         </article>
 
         <article className="site-map">
           <h4>Jivo Chat Login Details</h4>
-          <a href="https://app.jivosite.com/login">
-            https://app.jivosite.com/login
-          </a>
+          <Link to="https://app.jivosite.com/login" className="link">
+            Login Jivo Chat
+          </Link>
           <div className="jivo">
             <p>
               <b>email:</b> team.pledge.bank@gmail.com
@@ -47,7 +48,9 @@ const SiteMap = () => {
 
         <article className="site-map">
           <h4>Gmail Login Details</h4>
-          <a href="https://mail.google.com">https://mail.google.com</a>
+          <Link to="https://mail.google.com" className="link">
+            Login Gmail
+          </Link>
           <div className="jivo">
             <p>
               <b>email:</b> team.pledge.bank@gmail.com
@@ -59,10 +62,10 @@ const SiteMap = () => {
         </article>
 
         <article className="site-map">
-          <h4>Admin1 Login Details (Can be Modified)</h4>
-          <a href="https://pledge-bank.com/login">
-            https://pledge-bank.com/login
-          </a>
+          <h4>Admin1 Login Details (has been changed)</h4>
+          <Link to="/login" className="link">
+            Admin Login
+          </Link>
           <div className="jivo">
             <p>
               <b>email:</b> admin1@admin1.com
@@ -75,107 +78,107 @@ const SiteMap = () => {
 
         <article className="site-map">
           <h4>Update or Modify Account Details</h4>
-          <a href="https://pledge-bank.com/dashboard/account">
-            https://pledge-bank.com/dashboard/account
-          </a>
+          <Link to="/dashboard/account" className="link">
+            Modify Account Details
+          </Link>
         </article>
 
         <article className="site-map">
           <h4>Update Passport</h4>
-          <a href="https://pledge-bank.com/dashboard/passport">
-            https://pledge-bank.com/dashboard/passport
-          </a>
+          <Link to="/dashboard/passport" className="link">
+            Update Passport
+          </Link>
         </article>
 
         <article className="site-map">
           <h4>Change Password</h4>
-          <a href="https://pledge-bank.com/dashboard/security">
-            https://pledge-bank.com/dashboard/security
-          </a>
+          <Link to="/dashboard/security" className="link">
+            Change Password
+          </Link>
         </article>
 
         <article className="site-map">
           <h4>Deposit Money (You must login as Admin to Deposit)</h4>
-          <a href="https://pledge-bank.com/dashboard/deposit">
-            https://pledge-bank.com/dashboard/deposit
-          </a>
+          <Link to="/dashboard/deposit" className="link">
+            Deposit Money
+          </Link>
         </article>
 
         <article className="site-map">
           <h4>Withdraw User Fund from Admin Dashboard</h4>
-          <a href="https://pledge-bank.com/dashboard/withdraw">
-            https://pledge-bank.com/dashboard/withdraw
-          </a>
+          <Link to="/dashboard/withdraw" className="link">
+            Withdraw as Admin
+          </Link>
         </article>
 
         <article className="site-map">
           <h4>Send Money from User Dashboard</h4>
-          <a href="https://pledge-bank.com/dashboard/sendMoney">
-            https://pledge-bank.com/dashboard/sendMoney
-          </a>
+          <Link to="/dashboard/sendMoney" className="link">
+            Send Money as User
+          </Link>
         </article>
 
         <article className="site-map">
           <h4>Check Account Information</h4>
-          <a href="https://pledge-bank.com/dashboard/accountInfo">
-            https://pledge-bank.com/dashboard/accountInfo
-          </a>
+          <Link to="/dashboard/accountInfo" className="link">
+            Account Details
+          </Link>
         </article>
 
         <article className="site-map">
           <h4>Transaction History</h4>
-          <a href="https://pledge-bank.com/dashboard/transaction">
-            https://pledge-bank.com/dashboard/transaction
-          </a>
+          <Link to="/dashboard/transaction" className="link">
+            Transaction History
+          </Link>
         </article>
 
         <article className="site-map">
           <h4>Check Account Balance or Dashboard Homepage</h4>
-          <a href="https://pledge-bank.com/dashboard">
-            https://pledge-bank.com/dashboard
-          </a>
+          <Link to="/dashboard" className="link">
+            Check Account Balance
+          </Link>
         </article>
 
         <article className="site-map">
           <h4>Set Transfer Details(which includes your transfer pin)</h4>
-          <a href="https://pledge-bank.com/dashboard/set-transfer-details">
-            https://pledge-bank.com/dashboard/set-transfer-details
-          </a>
+          <Link to="/dashboard/set-transfer-details" className="link">
+            Set Transfer Details
+          </Link>
         </article>
 
         <article className="site-map">
           <h4>Send Notification Message to Client</h4>
-          <a href="https://pledge-bank.com/dashboard/notificationMessage">
-            https://pledge-bank.com/dashboard/notificationMessage
-          </a>
+          <Link to="/dashboard/notificationMessage" className="link">
+            Send Notification Message
+          </Link>
         </article>
 
         <article className="site-map">
           <h4>Update Withdrawals </h4>
-          <a href="https://pledge-bank.com/dashboard/update">
-            https://pledge-bank.com/dashboard/update
-          </a>
+          <Link to="/dashboard/update" className="link">
+            Update Withdrawals
+          </Link>
         </article>
 
         <article className="site-map">
           <h4>Update Deposit </h4>
-          <a href="https://pledge-bank.com/dashboard/updateDeposit">
-            https://pledge-bank.com/dashboard/updateDeposit
-          </a>
+          <Link to="/dashboard/updateDeposit" className="link">
+            Update Deposit
+          </Link>
         </article>
 
         <article className="site-map">
           <h4>Update User </h4>
-          <a href="https://pledge-bank.com/dashboard/updateUsers">
-            https://pledge-bank.com/dashboard/updateUsers
-          </a>
+          <Link to="/dashboard/updateUsers" className="link">
+            Update User
+          </Link>
         </article>
 
         <article className="site-map">
           <h4>Add User </h4>
-          <a href="https://pledge-bank.com/dashboard/addUser">
-            https://pledge-bank.com/dashboard/addUser
-          </a>
+          <Link to="/dashboard/addUser" className="link">
+            Add User
+          </Link>
         </article>
       </div>
     </Wrapper>
