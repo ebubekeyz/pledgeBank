@@ -170,7 +170,7 @@ then close all select boxes: */
     process.env.NODE_ENV !== 'production'
       ? 'http://localhost:7000'
       : 'https://pledgebank.onrender.com';
-  // k
+
   return (
     <Wrapper>
       <div className="container" style={{ marginBottom: '4rem' }}>
