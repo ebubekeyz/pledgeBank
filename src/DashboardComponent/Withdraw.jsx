@@ -231,22 +231,24 @@ then close all select boxes: */
 
           <article className="to">
             <div>
-              <h4>Transfer To:</h4>
+              <h4></h4>
               <FormInput
                 placeholder="Beneficiary Account Number"
                 name="accountNumber"
                 id="acc"
+                label="Account Number"
               />
               <FormInput
                 name="accountName"
                 id="senderName"
                 placeholder="Account Name"
+                label="Account Name"
               />
             </div>
           </article>
 
           <span className="label" style={{ marginTop: '2rem' }}>
-            To
+            Select Account to withdraw From
           </span>
           <div className="custom-select">
             <select name="user" className="">

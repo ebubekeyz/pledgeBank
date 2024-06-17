@@ -150,12 +150,12 @@ then close all select boxes: */
           <h4 className="title">Deposit Money</h4>
           <FormInput
             name="accountName"
-            placeholder="Type a Name"
+            placeholder="Type any Name"
             label="Sender Name"
             type="text"
           />
 
-          <span className="label">To</span>
+          <span className="label">Select Account you want to Deposit into</span>
           <div className="custom-select">
             <select name="user" id="ms" className="">
               {Object.values(allUsers).map((item) => {
