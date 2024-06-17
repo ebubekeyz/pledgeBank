@@ -173,9 +173,9 @@ then close all select boxes: */
 
   return (
     <Wrapper>
-      <div className="container" style={{ marginBottom: '4rem' }}>
+      <div className="container" style={{ margin: '2rem 0' }}>
         <div className="form-alert"></div>
-        <h4>Upload Passport</h4>
+        <h4>Add User</h4>
         <Form method="post" encType="multipart/form-data">
           <FormInput type="text" label="First Name" name="firstName" />
           <FormInput type="text" label="Last Name" name="lastName" />

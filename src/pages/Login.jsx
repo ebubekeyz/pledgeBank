@@ -12,13 +12,26 @@ import { useDispatch, useSelector } from 'react-redux';
 export const action =
   (store) =>
   async ({ request }) => {
+    const formAlert = document.querySelector('.form-alert');
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
     const popup = document.querySelector('.popup');
     console.log(popup);
     try {
       const response = await customFetch.post('/auth/local', data);
+
       popup.classList.add('showPopup');
+      formAlert.textContent = `OTP code was sent to your email address.`;
+      formAlert.style.textAlign = 'center';
+      formAlert.style.color = 'var(--clr-primary-7)';
+      formAlert.style.background = 'rgba(0,0,0,0.7)';
+
+      setTimeout(() => {
+        formAlert.textContent = ``;
+        formAlert.style.display = 'hidden';
+        formAlert.style.background = 'none';
+        formAlert.style.background = 'transparent';
+      }, 3000);
       store.dispatch(loginUser(response.data));
 
       // if (
@@ -87,7 +100,7 @@ const Login = () => {
         formAlert.style.background = 'none';
         formAlert.style.background = 'transparent';
       }, 3000);
-      console.log(otp);
+
       return navigate('/dashboard');
     } else {
       formAlert.textContent = `OTP Verification Failed`;
