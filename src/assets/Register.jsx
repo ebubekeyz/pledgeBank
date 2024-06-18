@@ -112,32 +112,25 @@ const Wrapper = styled.div`
 
   .logo-img {
     width: 2rem;
+    text-align: center;
   }
 
   .logo {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: 1fr;
-
-    position: absolute;
-    top: 30%;
-    left: 50%;
     text-align: center;
-    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
     place-items: center;
-    color: var(--clr-grey-10);
   }
 
-  .logo span {
-    font-style: italic;
-    font-size: 1rem;
-  }
-  .logo h1 {
-    font-style: italic;
-    margin-top: 1rem;
-    font-size: 1.5rem;
-    letter-spacing: 0.5rem;
-    text-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  .logo h4 {
+    font-size: 1.2rem;
+    letter-spacing: 0.04rem;
+    text-transform: capitalize;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+    font-family: var(--ff-primary);
+    color: var(--clr-grey-8);
   }
   .link {
     text-align: center;

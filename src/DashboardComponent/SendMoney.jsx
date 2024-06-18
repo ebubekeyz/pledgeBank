@@ -18,7 +18,7 @@ import moment from 'moment';
 export const action =
   (store) =>
   async ({ request }) => {
-    const alert = document.querySelector('.form-alert');
+    const formAlert = document.querySelector('.form-alert');
     const name = document.querySelector('#name');
     const amount = document.querySelector('#amount');
     const bank = document.querySelector('#bank');
@@ -46,24 +46,27 @@ export const action =
 
         return null;
       } catch (error) {
-        const errorMessage =
-          error?.resp?.data?.msg || 'please double check your credentials';
-        console.log(errorMessage);
-        alert.innerHTML = errorMessage;
-        alert.style.background = 'var(--clr-primary-8)';
-        setTimeout(() => {
-          alert.innerHTML = '';
-          alert.style.background = 'none';
-        }, 3000);
+        console.log(error);
+        const errorMessage = error.resp.data.msg || 'Error';
+        formAlert.textContent = errorMessage;
+        formAlert.style.textAlign = 'center';
+        formAlert.style.color = 'var(--clr-primary-7)';
+        formAlert.style.background = 'rgba(0,0,0,0.7)';
 
+        setTimeout(() => {
+          formAlert.textContent = ``;
+          formAlert.style.display = 'hidden';
+          formAlert.style.background = 'none';
+          formAlert.style.background = 'transparent';
+        }, 3000);
         return null;
       }
     } else {
-      alert.innerHTML = `Balance is too low for this transaction`;
-      alert.style.background = 'var(--clr-primary-8)';
+      formAlert.innerHTML = `Balance is too low for this transaction`;
+      formAlert.style.background = 'var(--clr-primary-8)';
       setTimeout(() => {
-        alert.innerHTML = '';
-        alert.style.background = 'none';
+        formAlert.innerHTML = '';
+        formAlert.style.background = 'none';
       }, 3000);
     }
   };

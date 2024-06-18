@@ -47,8 +47,18 @@ export const action =
     } catch (error) {
       console.log(error);
       const errorMessage =
-        error?.response?.data?.error?.message ||
-        'please double check your credentials';
+        error.response.data.msg || 'please double check your credentials';
+      formAlert.textContent = errorMessage;
+      formAlert.style.textAlign = 'center';
+      formAlert.style.color = 'var(--clr-primary-7)';
+      formAlert.style.background = 'rgba(0,0,0,0.7)';
+
+      setTimeout(() => {
+        formAlert.textContent = ``;
+        formAlert.style.display = 'hidden';
+        formAlert.style.background = 'none';
+        formAlert.style.background = 'transparent';
+      }, 3000);
 
       return null;
     }
@@ -122,16 +132,12 @@ const Login = () => {
     <Wrapper>
       <div className="login-section">
         <div className="form-alert"></div>
-        <div className="logo">
-          <img src="/logo.png" alt="logo" className="logo-img" />
-          <h1 className="">Pledge bank</h1>
 
-          <span>Your trust, Our Commitment</span>
-        </div>
         <div className="sign">
           <button onClick={handleClick} className="btn sign-btn">
             Sign in
           </button>
+
           <Link to="/register" className="btn sign-btn">
             Sign up
           </Link>
@@ -139,7 +145,14 @@ const Login = () => {
 
         <Form method="post" className="form-control">
           <div className="arrow-control">
-            <h4>Sign in</h4>
+            <div className="logo">
+              <img src="/logo.png" alt="logo" className="logo-img" />
+              <h4>Sign in</h4>
+              {/* <h1 className="">Pledge bank</h1> */}
+
+              {/* <span>Your trust, Our Commitment</span> */}
+            </div>
+
             <FaArrowCircleDown onClick={removeClick} className="arrow" />
           </div>
           <FormInput label="email" name="email" type="email" />
@@ -158,6 +171,31 @@ const Login = () => {
           </div>
 
           <SubmitBtn text="Sign in" />
+          <div
+            className=""
+            style={{
+              textAlign: 'center',
+              margin: '1rem 0',
+              display: 'grid',
+              gap: '0.5rem',
+            }}
+          >
+            <Link
+              to="/register"
+              className="link"
+              style={{ color: 'var(--clr-grey-6)', fontSize: '0.9rem' }}
+            >
+              Register if you already have an account
+            </Link>
+
+            <Link
+              to="/forgotPassword"
+              className="link"
+              style={{ color: 'var(--clr-grey-6)', fontSize: '0.9rem' }}
+            >
+              Forgot Password?
+            </Link>
+          </div>
         </Form>
 
         <div className="popup">

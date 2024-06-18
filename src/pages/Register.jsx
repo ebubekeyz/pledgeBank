@@ -28,18 +28,19 @@ export const action =
       }, 3000);
       return redirect('/login');
     } catch (error) {
-      formAlert.textContent = `failed`;
+      console.log(error);
+      const errorMessage = error.response.data.msg || 'Registration Failed';
+      formAlert.textContent = errorMessage;
       formAlert.style.textAlign = 'center';
       formAlert.style.color = 'var(--clr-primary-7)';
+      formAlert.style.background = 'rgba(0,0,0,0.7)';
+
       setTimeout(() => {
         formAlert.textContent = ``;
         formAlert.style.display = 'hidden';
         formAlert.style.background = 'none';
+        formAlert.style.background = 'transparent';
       }, 3000);
-      const errorMessage =
-        error?.response?.data?.error?.message ||
-        'please double check your credentials';
-      console.log(errorMessage);
       return null;
     }
   };
@@ -252,12 +253,6 @@ then close all select boxes: */
   return (
     <Wrapper>
       <section className="login-section">
-        <div className="logo">
-          <img src="/logo.png" alt="logo" className="logo-img" />
-          <h1 className="">Pledge bank</h1>
-
-          <span>Your trust, Our Commitment</span>
-        </div>
         <div className="about-center section-center">
           <Form
             method="post"
@@ -266,7 +261,10 @@ then close all select boxes: */
           >
             <div className="form-alert" id="form-alert"></div>
             {/* <!-- btn container  */}
-
+            <div className="logo">
+              <img src="/logo.png" alt="logo" className="logo-img" />
+              <h4>Create an Account</h4>
+            </div>
             <div className="about-content">
               {/* <!-- single item  */}
               <div className="content active" id="history">
@@ -418,7 +416,11 @@ then close all select boxes: */
                 <SubmitBtn text="register" />
               </div>
             </div>
-            <Link to="/login" className="link">
+            <Link
+              to="/login"
+              className="link"
+              style={{ color: 'var(--clr-grey-6)', fontSize: '0.9rem' }}
+            >
               Login if you already have an account
             </Link>
           </Form>
