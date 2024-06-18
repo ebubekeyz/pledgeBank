@@ -118,6 +118,7 @@ const Wrapper = styled.aside`
       place-items: start;
       padding: 0rem 3rem;
       padding-top: 2rem;
+      padding-bottom: 4rem;
 
       margin: 0 auto;
     }
