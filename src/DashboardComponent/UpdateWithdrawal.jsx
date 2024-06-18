@@ -456,7 +456,9 @@ then close all select boxes: */
           Confirm Receiver
         </span>
 
-        <h4 className="test">User</h4>
+        <h4 className="test" style={{ marginTop: '2rem' }}>
+          User
+        </h4>
         {user.role === 'user' ? (
           <input type="text" name="user" defaultValue={user._id} hidden />
         ) : (
