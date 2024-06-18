@@ -103,6 +103,7 @@ import {
   calculateAllUsers,
   loadAllWithdrawal,
   loadAllDeposit,
+  patchBalance,
 } from './features/user/userSlice';
 import { loadWithdraw } from './features/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -322,6 +323,7 @@ const App = () => {
     dispatch(calculateNotification());
     dispatch(calculateAllUsers());
     dispatch(loadAllWithdrawal());
+    dispatch(patchBalance());
   }, [user]);
   return (
     <>

@@ -43,10 +43,6 @@ const Landing = () => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
-  // const realDeposit = Object.values(deposit);
-  // const num = Object.values(deposit).length - 1;
-  // const { amount, accountName, createdAt, status } = deposit[num];
-
   return (
     <Wrapper>
       <div className="landing">

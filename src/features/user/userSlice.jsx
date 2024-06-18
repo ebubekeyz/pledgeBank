@@ -118,6 +118,27 @@ export const loadAllWithdrawal = createAsyncThunk(
   }
 );
 
+export const patchBalance = createAsyncThunk(
+  'patchBalance/patchBalance',
+  async (name, thunkAPI) => {
+    const { user, balance, withdrawBalance } = thunkAPI.getState().userState;
+
+    const totalBalance = balance - withdrawBalance;
+
+    const data = {
+      balance: totalBalance,
+    };
+    try {
+      const resp = await customFetch.patch(`/auth/${user._id}`, data, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+    } catch (error) {
+      return thunkAPI.rejectWithValue('Something went wrong');
+    }
+  }
+);
 export const loadAllDeposit = createAsyncThunk(
   'allDeposit/loadAllDeposit',
   async (name, thunkAPI) => {
