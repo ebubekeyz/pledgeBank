@@ -68,7 +68,7 @@ const SiteMap = () => {
           </Link>
           <div className="jivo">
             <p>
-              <b>email:</b> admin1@admin1.com
+              <b>email:</b> oliveramora223@gmail.com
             </p>
             <p>
               <b>Password:</b> secret
