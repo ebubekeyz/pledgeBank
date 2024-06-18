@@ -74,8 +74,9 @@ const Landing = () => {
           <p>
             Balance Updated at <span>{moment().format('h:mm a')}</span>
           </p>
-          <p>
-            <FiRefreshCcw onClick={reload} style={{ cursor: 'pointer' }} />
+          <p onClick={reload} style={{ cursor: 'pointer' }} className="refresh">
+            <FiRefreshCcw />
+            <span style={{ fontSize: '0.8rem' }}>Refresh Balance</span>
           </p>
         </article>
 
