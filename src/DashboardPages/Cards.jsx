@@ -36,7 +36,7 @@ const Cards = () => {
           </div>
 
           <div className="card-num">
-            {show ? <h4>5268 1459 0850 1553</h4> : <h4>5268 1459 ****</h4>}
+            {show ? <h4>5268 1459 0850 1553</h4> : <h4>**** **** 1553</h4>}
             {show ? (
               <FaEye
                 className="text-gray-200 text-lg font-bold cursor-pointer"
