@@ -7,13 +7,13 @@ import {
   FaReceipt,
   FaSdCard,
 } from 'react-icons/fa6';
-import { Link, redirect } from 'react-router-dom';
+import { Link, redirect, useLocation } from 'react-router-dom';
 import Wrapper from '../assets/DashboardWrapper/Landing';
 import { useSelector } from 'react-redux';
 import { customFetch } from '../utils';
 import { formatPrice } from '../utils';
 import moment from 'moment';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FiRefreshCcw } from 'react-icons/fi';
 import { FaArrowAltCircleDown, FaRegIdCard } from 'react-icons/fa';
 
@@ -51,6 +51,13 @@ const Landing = () => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
+  const nav = useLocation();
+  console.log(nav);
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     window.location.reload();
+  //   }, 10000);
+  // }, []);
   return (
     <Wrapper>
       <div className="landing">

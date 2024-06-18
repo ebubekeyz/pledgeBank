@@ -2,14 +2,15 @@ import styled from 'styled-components';
 
 const Wrapper = styled.aside`
   .sidebar {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
+    bottom: 0;
     width: 100%;
-    height: 100%;
+    height: 150%;
     background: rgba(0, 0, 0, 0.95);
     z-index: 4;
-    display: grid;
+    padding-top: 1.5rem;
     /* align-items: center;
   justify-content: center; */
     place-items: center;
@@ -119,7 +120,7 @@ const Wrapper = styled.aside`
       padding: 0rem 3rem;
       padding-top: 2rem;
       padding-bottom: 4rem;
-
+      height: 100%
       margin: 0 auto;
     }
     .power {

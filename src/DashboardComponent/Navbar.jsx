@@ -67,6 +67,7 @@ const Navbar = ({ onClick }) => {
 
     popup.style.display = 'none';
   };
+
   return (
     <Wrapper>
       <nav onClick={onClick} className="nav" id="nav">
