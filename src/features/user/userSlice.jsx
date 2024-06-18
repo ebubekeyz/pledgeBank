@@ -255,7 +255,6 @@ const userSlice = createSlice({
     },
     calculateAllUsers: (state) => {
       let user = JSON.parse(localStorage.getItem('user'));
-
       if (user !== null) {
         let allUsers = JSON.parse(localStorage.getItem('allUsers'));
         // very important

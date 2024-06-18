@@ -25,6 +25,7 @@ import ChangePassword, {
   loader as ChangePasswordLoader,
 } from './DashboardPages/ChangePassword';
 import { loader as WithdrawLoader } from './DashboardPages/Withdraw';
+import { loader as DeleteLoader } from './DashboardPages/Delete';
 import { loader as AddUserLoader } from './DashboardPages/AddUser';
 import Passport, { loader as PassportLoader } from './DashboardPages/Passport';
 import { loader as UsersLoader } from './DashboardPages/Users';
@@ -87,6 +88,7 @@ import {
   UpdateUsers,
   AddUser,
   Withdraw,
+  Delete,
 } from './DashboardPages';
 
 import { action as RequestAction } from './pages/Request';
@@ -268,6 +270,11 @@ const router = createBrowserRouter([
         element: <Withdraw />,
         loader: WithdrawLoader(store),
         action: WithdrawAction(store),
+      },
+      {
+        path: '/dashboard/delete',
+        element: <Delete />,
+        loader: DeleteLoader(store),
       },
 
       {

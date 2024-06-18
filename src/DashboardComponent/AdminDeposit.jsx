@@ -128,14 +128,9 @@ const AdminDeposit = () => {
       }
     }
 
-    /* If the user clicks anywhere outside the select box,
-then close all select boxes: */
     document.addEventListener('click', closeAllSelect);
   };
 
-  //   window.addEventListener('DOMContentLoaded', () => {
-  //     select();
-  //   });
   useEffect(() => {
     select();
   }, []);

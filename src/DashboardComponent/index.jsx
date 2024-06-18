@@ -18,3 +18,4 @@ export { default as UpdateUsers } from './UpdateUsers';
 export { default as AddUser } from './AddUser';
 export { default as Withdraw } from './Withdraw';
 export { default as ChangePassword } from './ChangePassword';
+export { default as Delete } from './Delete';
