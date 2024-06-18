@@ -4,6 +4,7 @@ import { FormInput, SubmitBtn } from '../components';
 import { useEffect } from 'react';
 import { customFetch } from '../utils';
 import { useSelector } from 'react-redux';
+import { loginUser } from '../features/user/userSlice';
 
 export const action =
   (store) =>
@@ -18,7 +19,7 @@ export const action =
         `/auth/${data.user2}/passwordReset`,
         data
       );
-
+      store.dispatch(loginUser(resp.data));
       alert.innerHTML = resp.data.msg;
       alert.style.background = 'var(--clr-primary-8)';
       setTimeout(() => {
