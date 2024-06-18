@@ -17,6 +17,7 @@ import Wrapper from '../assets/DashboardWrapper/Sidebar';
 import {
   FaEdit,
   FaHome,
+  FaIdCard,
   FaReceipt,
   FaServicestack,
   FaTimes,
@@ -109,6 +110,10 @@ const Sidebar = ({ onClick, onClick2 }) => {
             ) : (
               ''
             )}
+            <li>
+              <FaIdCard className="service" />
+              <Link to="/dashboard/cards">Card</Link>
+            </li>
 
             <li>
               <FaReceipt className="service" />

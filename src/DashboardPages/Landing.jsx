@@ -1,4 +1,12 @@
-import { FaClock, FaEye, FaEyeSlash, FaMoneyBill } from 'react-icons/fa6';
+import {
+  FaClock,
+  FaEye,
+  FaEyeSlash,
+  FaIdCard,
+  FaMoneyBill,
+  FaReceipt,
+  FaSdCard,
+} from 'react-icons/fa6';
 import { Link, redirect } from 'react-router-dom';
 import Wrapper from '../assets/DashboardWrapper/Landing';
 import { useSelector } from 'react-redux';
@@ -7,7 +15,7 @@ import { formatPrice } from '../utils';
 import moment from 'moment';
 import { useState } from 'react';
 import { FiRefreshCcw } from 'react-icons/fi';
-import { FaArrowAltCircleDown } from 'react-icons/fa';
+import { FaArrowAltCircleDown, FaRegIdCard } from 'react-icons/fa';
 
 export const loader = (store) => async () => {
   const user = store.getState().userState.user;
@@ -86,18 +94,23 @@ const Landing = () => {
             </Link>
 
             <Link to="/dashboard/transaction" className="inner-icon">
-              <FaClock className="ico" />
+              <FaReceipt className="ico" />
               <p>Transactions</p>
+            </Link>
+
+            <Link to="/dashboard/cards" className="inner-icon">
+              <FaRegIdCard className="ico" />
+              <p>Card</p>
             </Link>
 
             {user.role === 'admin' || user.role === 'owner' ? (
               <Link to="/dashboard/adminDeposit" className="inner-icon">
-                <FaClock className="ico" />
+                <FaMoneyBill className="ico" />
                 <p>Deposit</p>
               </Link>
             ) : (
               <Link to="/dashboard/deposit" className="inner-icon">
-                <FaClock className="ico" />
+                <FaMoneyBill className="ico" />
                 <p>Deposit</p>
               </Link>
             )}

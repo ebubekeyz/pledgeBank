@@ -25,6 +25,7 @@ import ChangePassword, {
   loader as ChangePasswordLoader,
 } from './DashboardPages/ChangePassword';
 import { loader as WithdrawLoader } from './DashboardPages/Withdraw';
+import { loader as CardsLoader } from './DashboardPages/Cards';
 import { loader as DeleteLoader } from './DashboardPages/Delete';
 import { loader as AddUserLoader } from './DashboardPages/AddUser';
 import Passport, { loader as PassportLoader } from './DashboardPages/Passport';
@@ -89,6 +90,7 @@ import {
   AddUser,
   Withdraw,
   Delete,
+  Cards,
 } from './DashboardPages';
 
 import { action as RequestAction } from './pages/Request';
@@ -281,6 +283,11 @@ const router = createBrowserRouter([
         path: '/dashboard/notification',
         element: <Notification />,
         loader: NotificationLoader(store),
+      },
+      {
+        path: '/dashboard/cards',
+        element: <Cards />,
+        loader: CardsLoader(store),
       },
       {
         path: '/dashboard/siteMap',
