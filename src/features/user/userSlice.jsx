@@ -233,16 +233,21 @@ const userSlice = createSlice({
       }
     },
     calculateAllUsers: (state) => {
-      let allUsers = JSON.parse(localStorage.getItem('allUsers'));
       let user = JSON.parse(localStorage.getItem('user'));
-      // very important
-      if (allUsers !== null) {
-        const findImage = Object.values(allUsers).filter(
-          (item) => item._id === user._id
-        );
-        state.passport = findImage[0].passport;
+
+      if (user !== null) {
+        let allUsers = JSON.parse(localStorage.getItem('allUsers'));
+        // very important
+        if (allUsers !== null) {
+          const findImage = Object.values(allUsers).filter(
+            (item) => item._id === user._id
+          );
+          state.passport = findImage[0].passport;
+        } else {
+          state.filterUser = [];
+        }
       } else {
-        state.filterUser = [];
+        state.passport = '';
       }
     },
     addAllUsers: (state, action) => {

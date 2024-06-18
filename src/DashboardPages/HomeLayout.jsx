@@ -1,7 +1,5 @@
 import { Outlet } from 'react-router-dom';
 import { Footer, Navbar } from '../DashboardComponent';
-import { customFetch } from '../utils';
-import { useSelector } from 'react-redux';
 
 const HomeLayout = () => {
   return (
@@ -10,8 +8,6 @@ const HomeLayout = () => {
       <div className="section-center" id="dashboard">
         <Outlet />
       </div>
-
-      {/* <Footer /> */}
     </>
   );
 };
