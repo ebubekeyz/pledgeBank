@@ -97,8 +97,8 @@ const Wrapper = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1000px;
-      margin-left: 18rem;
+      max-width: 950px;
+      margin-left: 21rem;
     }
     .nav-btn {
       display: none;

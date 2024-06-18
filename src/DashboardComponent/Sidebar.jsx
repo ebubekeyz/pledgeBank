@@ -135,7 +135,7 @@ const Sidebar = ({ onClick, onClick2 }) => {
             {user.role === 'admin' || user.role === 'owner' ? (
               <li>
                 <FaEdit className="service" />
-                <Link to="/dashboard/changePassword">Change Password</Link>
+                <Link to="/dashboard/changePassword">Edit Password</Link>
               </li>
             ) : (
               ''

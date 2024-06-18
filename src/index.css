@@ -249,7 +249,7 @@ p {
 
 @media screen and (min-width: 1300px) {
   #dashboard {
-    margin-left: 19rem;
-    max-width: 1000px;
+    margin-left: 22rem;
+    max-width: 950px;
   }
 }
