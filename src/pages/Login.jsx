@@ -16,7 +16,7 @@ export const action =
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
     const popup = document.querySelector('.popup');
-    console.log(popup);
+
     try {
       const response = await customFetch.post('/auth/local', data);
 
@@ -33,15 +33,6 @@ export const action =
         formAlert.style.background = 'transparent';
       }, 3000);
       store.dispatch(loginUser(response.data));
-
-      // if (
-      //   response.data.user.role === 'admin' ||
-      //   response.data.user.role === 'owner'
-      // ) {
-      //   return redirect('/dashboard');
-      // } else {
-      //   return redirect('/');
-      // }
 
       return null;
     } catch (error) {
