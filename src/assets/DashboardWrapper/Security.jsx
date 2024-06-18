@@ -4,7 +4,12 @@ const Wrapper = styled.div`
   .account {
     margin: 2rem 0;
   }
-
+  .label {
+    text-transform: capitalize;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--clr-grey-8);
+  }
   .form-alert {
     position: fixed;
     top: 50%;

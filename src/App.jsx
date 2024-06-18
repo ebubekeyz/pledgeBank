@@ -21,6 +21,9 @@ import { store } from './store';
 
 import { loader as SingleBlogLoader } from './pages/SingleBlog';
 import { loader as UpdateUsersLoader } from './DashboardPages/UpdateUsers';
+import ChangePassword, {
+  loader as ChangePasswordLoader,
+} from './DashboardPages/ChangePassword';
 import { loader as WithdrawLoader } from './DashboardPages/Withdraw';
 import { loader as AddUserLoader } from './DashboardPages/AddUser';
 import Passport, { loader as PassportLoader } from './DashboardPages/Passport';
@@ -45,6 +48,7 @@ import AccountInfo, {
 import Security, { loader as SecurityLoader } from './DashboardPages/Security';
 
 import { action as SendMoneyAction } from './DashboardComponent/SendMoney';
+import { action as ChangePasswordAction } from './DashboardComponent/ChangePassword';
 import { action as WithdrawAction } from './DashboardComponent/Withdraw';
 import { action as AddUserAction } from './DashboardComponent/AddUser';
 import { action as UpdateUsersAction } from './DashboardComponent/UpdateUsers';
@@ -225,6 +229,12 @@ const router = createBrowserRouter([
         element: <Update />,
         loader: UpdateLoader(store),
         action: UpdateWithdrawalAction(store),
+      },
+      {
+        path: '/dashboard/changePassword',
+        element: <ChangePassword />,
+        loader: ChangePasswordLoader(store),
+        action: ChangePasswordAction(store),
       },
       {
         path: '/dashboard/set-transfer-details',
