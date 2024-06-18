@@ -12,3 +12,4 @@ export { default as SingleBlog } from './SingleBlog';
 export { default as SingleService } from './SingleService';
 export { default as Terms } from './Terms';
 export { default as Privacy } from './Privacy';
+export { default as PasswordReset } from './PasswordReset';

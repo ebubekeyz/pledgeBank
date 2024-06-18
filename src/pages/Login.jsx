@@ -189,7 +189,7 @@ const Login = () => {
             </Link>
 
             <Link
-              to="/forgotPassword"
+              to="/passwordReset"
               className="link"
               style={{ color: 'var(--clr-grey-6)', fontSize: '0.9rem' }}
             >

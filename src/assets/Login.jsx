@@ -11,7 +11,9 @@ const Wrapper = styled.section`
     width: 2rem;
     text-align: center;
   }
-
+  .change {
+    display: none;
+  }
   .logo {
     text-align: center;
     margin: 0 auto;

@@ -7,6 +7,7 @@ import {
   HomeLayout,
   Landing,
   Login,
+  PasswordReset,
   Privacy,
   Projects,
   Register,
@@ -53,6 +54,7 @@ import { action as PassportAction } from './DashboardComponent/Passport';
 import { action as NotificationMessageAction } from './DashboardComponent/Notification';
 import { action as SetTransferDetailsAction } from './DashboardComponent/SetTransferDetails';
 import { action as LoginAction } from './pages/Login';
+import { action as PasswordResetAction } from './pages/PasswordReset';
 import { action as AccountAction } from './DashboardComponent/Account';
 import { action as SecurityAction } from './DashboardComponent/Security';
 import { action as RegisterAction } from './pages/Register';
@@ -158,6 +160,11 @@ const router = createBrowserRouter([
     path: 'login',
     element: <Login />,
     action: LoginAction(store),
+  },
+  {
+    path: 'passwordReset',
+    element: <PasswordReset />,
+    action: PasswordResetAction,
   },
   {
     path: 'Register',
