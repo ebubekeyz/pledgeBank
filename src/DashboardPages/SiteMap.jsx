@@ -180,6 +180,13 @@ const SiteMap = () => {
             Add User
           </Link>
         </article>
+
+        <article className="site-map">
+          <h4>Reset User's Password </h4>
+          <Link to="/dashboard/changePassword" className="link">
+            Reset User's Password
+          </Link>
+        </article>
       </div>
     </Wrapper>
   );
