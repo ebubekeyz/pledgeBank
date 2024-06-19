@@ -70,71 +70,73 @@ const Navbar = ({ onClick }) => {
 
   return (
     <Wrapper>
-      <nav onClick={onClick} className="nav" id="nav">
-        <div className="nav-center">
-          {/* nav header  */}
-          <div className="nav-header">
-            <button className="nav-btn" id="nav-btn">
-              <FaBarsStaggered onClick={handleToggle} />
-            </button>
-            <h1 className="nav-logo">
-              {/* <span className="pb">Pb</span> */}
-              Pledge <span className="inner">Bank</span>
-            </h1>
-          </div>
-          {/* nav-links  */}
-          <div className="pass-ico">
-            {' '}
-            <Link
-              onClick={clickNotice}
-              to="/dashboard/notification"
-              className="nav-links"
-            >
-              <FaBell
-                className="bell"
-                style={{ cursor: 'pointer', color: 'black' }}
-              />
-              <sup className="num">{num}</sup>
-            </Link>
-            {user.role === 'admin' || user.role === 'owner' ? (
-              <Link to="/dashboard/passport" className="passport">
-                <img
-                  src={`${pass}${passport}`}
-                  alt="passport"
-                  className="pass"
-                />
-              </Link>
-            ) : (
-              <div className="passport">
-                <img
-                  src={`${pass}${passport}`}
-                  alt="passport"
-                  className="pass"
-                />
-              </div>
-            )}
-          </div>
-        </div>
-
-        {num > 0 ? (
-          <div className="popup">
-            <div className="close-btn">
-              <FaTimes className="close-envelope" onClick={closeEnvelope} />
+      {user && (
+        <nav onClick={onClick} className="nav" id="nav">
+          <div className="nav-center">
+            {/* nav header  */}
+            <div className="nav-header">
+              <button className="nav-btn" id="nav-btn">
+                <FaBarsStaggered onClick={handleToggle} />
+              </button>
+              <h1 className="nav-logo">
+                {/* <span className="pb">Pb</span> */}
+                Pledge <span className="inner">Bank</span>
+              </h1>
             </div>
-            <h4>New Message</h4>
-            <img src="/envelope.svg" alt="envelope" className="envelope" />
-            <Link
-              to={`${url}/dashboard/notification`}
-              className="btn envelope-link"
-              onClick={clickNotice}
-            >
-              Read
-            </Link>
+            {/* nav-links  */}
+            <div className="pass-ico">
+              {' '}
+              <Link
+                onClick={clickNotice}
+                to="/dashboard/notification"
+                className="nav-links"
+              >
+                <FaBell
+                  className="bell"
+                  style={{ cursor: 'pointer', color: 'black' }}
+                />
+                <sup className="num">{num}</sup>
+              </Link>
+              {user.role === 'admin' || user.role === 'owner' ? (
+                <Link to="/dashboard/passport" className="passport">
+                  <img
+                    src={`${pass}${passport}`}
+                    alt="passport"
+                    className="pass"
+                  />
+                </Link>
+              ) : (
+                <div className="passport">
+                  <img
+                    src={`${pass}${passport}`}
+                    alt="passport"
+                    className="pass"
+                  />
+                </div>
+              )}
+            </div>
           </div>
-        ) : (
-          ''
-        )}
-      </nav>
+
+          {num > 0 ? (
+            <div className="popup">
+              <div className="close-btn">
+                <FaTimes className="close-envelope" onClick={closeEnvelope} />
+              </div>
+              <h4>New Message</h4>
+              <img src="/envelope.svg" alt="envelope" className="envelope" />
+              <Link
+                to={`${url}/dashboard/notification`}
+                className="btn envelope-link"
+                onClick={clickNotice}
+              >
+                Read
+              </Link>
+            </div>
+          ) : (
+            ''
+          )}
+        </nav>
+      )}
 
       <Sidebar onClick={handleClose} />
     </Wrapper>
