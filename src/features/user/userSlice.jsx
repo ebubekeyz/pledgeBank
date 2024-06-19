@@ -203,39 +203,54 @@ const userSlice = createSlice({
       localStorage.removeItem('deposit');
     },
     addWithdraw: (state, action) => {
-      const withdraw = { ...action.payload };
+      let user = JSON.parse(localStorage.getItem('user'));
+      if (user !== null) {
+        const withdraw = { ...action.payload };
 
-      state.withdraw = withdraw;
+        state.withdraw = withdraw;
 
-      localStorage.setItem('withdraw', JSON.stringify(withdraw));
+        localStorage.setItem('withdraw', JSON.stringify(withdraw));
+      }
     },
     addAllWithdraw: (state, action) => {
-      const allWithdraw = { ...action.payload };
+      let user = JSON.parse(localStorage.getItem('user'));
+      if (user !== null) {
+        const allWithdraw = { ...action.payload };
 
-      state.allWithdraw = allWithdraw;
+        state.allWithdraw = allWithdraw;
 
-      localStorage.setItem('allWithdraw', JSON.stringify(allWithdraw));
+        localStorage.setItem('allWithdraw', JSON.stringify(allWithdraw));
+      }
     },
     addAllDeposit: (state, action) => {
-      const allDeposit = { ...action.payload };
+      let user = JSON.parse(localStorage.getItem('user'));
+      if (user !== null) {
+        const allDeposit = { ...action.payload };
 
-      state.allDeposit = allDeposit;
+        state.allDeposit = allDeposit;
 
-      localStorage.setItem('allDeposit', JSON.stringify(allDeposit));
+        localStorage.setItem('allDeposit', JSON.stringify(allDeposit));
+      }
     },
     addNotification: (state, action) => {
-      const notification = { ...action.payload };
+      let user = JSON.parse(localStorage.getItem('user'));
+      if (user !== null) {
+        const notification = { ...action.payload };
 
-      state.notification = notification;
+        state.notification = notification;
 
-      localStorage.setItem('notification', JSON.stringify(notification));
+        localStorage.setItem('notification', JSON.stringify(notification));
+      }
     },
     addAccount: (state, action) => {
-      const account = { ...action.payload };
+      let user = JSON.parse(localStorage.getItem('user'));
+      if (user !== null) {
+        const account = { ...action.payload };
 
-      state.account = account;
+        state.account = account;
 
-      localStorage.setItem('account', JSON.stringify(account));
+        localStorage.setItem('account', JSON.stringify(account));
+      }
     },
     calculateNotification: (state) => {
       let notification = JSON.parse(localStorage.getItem('notification'));
@@ -257,7 +272,6 @@ const userSlice = createSlice({
       let user = JSON.parse(localStorage.getItem('user'));
       if (user !== null) {
         let allUsers = JSON.parse(localStorage.getItem('allUsers'));
-
         if (allUsers !== null) {
           const findImage = Object.values(allUsers).filter(
             (item) => item._id === user._id
@@ -271,11 +285,14 @@ const userSlice = createSlice({
       }
     },
     addAllUsers: (state, action) => {
-      const allUsers = { ...action.payload };
+      let user = JSON.parse(localStorage.getItem('user'));
+      if (user !== null) {
+        const allUsers = { ...action.payload };
 
-      state.allUsers = allUsers;
+        state.allUsers = allUsers;
 
-      localStorage.setItem('allUsers', JSON.stringify(allUsers));
+        localStorage.setItem('allUsers', JSON.stringify(allUsers));
+      }
     },
 
     addDeposit: (state, action) => {
