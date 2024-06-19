@@ -257,7 +257,7 @@ const userSlice = createSlice({
       let user = JSON.parse(localStorage.getItem('user'));
       if (user !== null) {
         let allUsers = JSON.parse(localStorage.getItem('allUsers'));
-        // very important
+
         if (allUsers !== null) {
           const findImage = Object.values(allUsers).filter(
             (item) => item._id === user._id
