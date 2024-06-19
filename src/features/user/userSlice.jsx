@@ -253,19 +253,22 @@ const userSlice = createSlice({
       }
     },
     calculateNotification: (state) => {
-      let notification = JSON.parse(localStorage.getItem('notification'));
+      let user = JSON.parse(localStorage.getItem('user'));
+      if (user !== null) {
+        let notification = JSON.parse(localStorage.getItem('notification'));
 
-      // very important
-      if (notification !== null) {
-        const id = Object.values(notification)[0]._id;
+        // very important
+        if (notification !== null) {
+          const id = Object.values(notification)[0]._id;
 
-        const filter = Object.values(notification).filter(
-          (item) => item.status === 'pending'
-        );
-        state.num = filter.length;
-        state.notificationId = id;
-      } else {
-        state.notificationId = '';
+          const filter = Object.values(notification).filter(
+            (item) => item.status === 'pending'
+          );
+          state.num = filter.length;
+          state.notificationId = id;
+        } else {
+          state.notificationId = '';
+        }
       }
     },
     calculateAllUsers: (state) => {
@@ -319,17 +322,20 @@ const userSlice = createSlice({
     },
 
     calculateWithdraw: (state) => {
-      let withdraw = JSON.parse(localStorage.getItem('withdraw'));
+      let user = JSON.parse(localStorage.getItem('user'));
+      if (user !== null) {
+        let withdraw = JSON.parse(localStorage.getItem('withdraw'));
 
-      // very important
-      if (withdraw !== null) {
-        const total = Object.values(withdraw).reduce((acc, curr) => {
-          return acc + curr.amount;
-        }, 0);
+        // very important
+        if (withdraw !== null) {
+          const total = Object.values(withdraw).reduce((acc, curr) => {
+            return acc + curr.amount;
+          }, 0);
 
-        state.withdrawBalance = total;
-      } else {
-        state.withdrawBalance = 0;
+          state.withdrawBalance = total;
+        } else {
+          state.withdrawBalance = 0;
+        }
       }
     },
   },
