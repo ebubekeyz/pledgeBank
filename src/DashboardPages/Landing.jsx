@@ -51,13 +51,7 @@ const Landing = () => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
-  const nav = useLocation();
-  console.log(nav);
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     window.location.reload();
-  //   }, 10000);
-  // }, []);
+
   return (
     <Wrapper>
       <div className="landing">

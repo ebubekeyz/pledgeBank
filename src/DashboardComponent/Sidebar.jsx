@@ -53,50 +53,41 @@ const Sidebar = ({ onClick, onClick2 }) => {
 
             <li>
               <FaHome className="home" />
-              <Link to="/dashboard">home</Link>
+              <a href="/dashboard">home</a>
             </li>
             <li>
               <FaPerson className="person" />
-              <Link to="/dashboard/accountInfo">Account</Link>
+              <a href="/dashboard/accountInfo">Account</a>
             </li>
 
             {user.role === 'admin' || user.role === 'owner' ? (
               <li>
                 <FaMoneyBillTransfer className="question" />
-                <Link to="/dashboard/withdraw">Withdraw</Link>
+                <a href="/dashboard/withdraw">Withdraw</a>
               </li>
             ) : (
               <li>
                 <FaMoneyBillTransfer className="question" />
-                <Link to="/dashboard/sendMoney">Send Money</Link>
+                <a href="/dashboard/sendMoney">Send Money</a>
               </li>
             )}
 
             {user.role === 'admin' || user.role === 'owner' ? (
               <li>
                 <FaMoneyBills className="phone" />
-                <Link to="/dashboard/adminDeposit">Deposit</Link>
+                <a href="/dashboard/adminDeposit">Deposit</a>
               </li>
             ) : (
               <li>
                 <FaMoneyBills className="phone" />
-                <Link to="/dashboard/deposit">Deposit</Link>
+                <a href="/dashboard/deposit">Deposit</a>
               </li>
             )}
 
             {user.role === 'admin' || user.role === 'owner' ? (
               <li>
                 <FaMoneyBills className="phone" />
-                <Link to="/dashboard/set-transfer-details">Transfer Info</Link>
-              </li>
-            ) : (
-              ''
-            )}
-
-            {user.role === 'admin' || user.role === 'owner' ? (
-              <li>
-                <FiSettings className="phone" />
-                <Link to="/dashboard/notificationMessage">Notification</Link>
+                <a href="/dashboard/set-transfer-details">Transfer Info</a>
               </li>
             ) : (
               ''
@@ -105,25 +96,34 @@ const Sidebar = ({ onClick, onClick2 }) => {
             {user.role === 'admin' || user.role === 'owner' ? (
               <li>
                 <FiSettings className="phone" />
-                <Link to="/dashboard/siteMap">Site Map</Link>
+                <a href="/dashboard/notificationMessage">Notification</a>
+              </li>
+            ) : (
+              ''
+            )}
+
+            {user.role === 'admin' || user.role === 'owner' ? (
+              <li>
+                <FiSettings className="phone" />
+                <a href="/dashboard/siteMap">Site Map</a>
               </li>
             ) : (
               ''
             )}
             <li>
               <FaIdCard className="service" />
-              <Link to="/dashboard/cards">Card</Link>
+              <a href="/dashboard/cards">Card</a>
             </li>
 
             <li>
               <FaReceipt className="service" />
-              <Link to="/dashboard/transaction">Transactions</Link>
+              <a href="/dashboard/transaction">Transactions</a>
             </li>
 
             {user.role === 'admin' || user.role === 'owner' ? (
               <li>
                 <FaEdit className="service" />
-                <Link to="/dashboard/addUser">Add User</Link>
+                <a href="/dashboard/addUser">Add User</a>
               </li>
             ) : (
               ''
@@ -132,7 +132,7 @@ const Sidebar = ({ onClick, onClick2 }) => {
             {user.role === 'admin' || user.role === 'owner' ? (
               <li>
                 <FaEdit className="service" />
-                <Link to="/dashboard/update">Update</Link>
+                <a href="/dashboard/update">Update</a>
               </li>
             ) : (
               ''
@@ -140,7 +140,7 @@ const Sidebar = ({ onClick, onClick2 }) => {
             {user.role === 'admin' || user.role === 'owner' ? (
               <li>
                 <FaEdit className="service" />
-                <Link to="/dashboard/changePassword">Edit Password</Link>
+                <a href="/dashboard/changePassword">Edit Password</a>
               </li>
             ) : (
               ''
@@ -149,7 +149,7 @@ const Sidebar = ({ onClick, onClick2 }) => {
             {/* {user.role === 'admin' || user.role === 'owner' ? (
               <li>
                 <FaEdit className="service" />
-                <Link to="/dashboard/delete">Delete Items</Link>
+                <a href="/dashboard/delete">Delete Items</a>
               </li>
             ) : (
               ''
