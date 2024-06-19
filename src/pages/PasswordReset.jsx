@@ -1,4 +1,4 @@
-import { Form, Link, redirect, useNavigate } from 'react-router-dom';
+import { Form, Link, redirect } from 'react-router-dom';
 import Wrapper from '../assets/Login';
 import { customFetch } from '../utils';
 import { loginUser, logoutUser } from '../features/user/userSlice';
@@ -80,8 +80,7 @@ const PasswordReset = () => {
     password.type = 'password';
   };
 
-  const user = useSelector((state) => state.userState.user);
-  const navigate = useNavigate();
+  // const user = useSelector((state) => state.userState.user);
 
   const [email, setEmail] = useState({
     email: '',
