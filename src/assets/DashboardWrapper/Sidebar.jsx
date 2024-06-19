@@ -112,7 +112,7 @@ const Wrapper = styled.aside`
   }
   @media screen and (min-width: 1300px) {
     .sidebar {
-      width: 24%;
+      width: 21%;
       background: rgba(0, 0, 0, 0.95);
       overflow-x: hidden;
       transform: translateX(0);
