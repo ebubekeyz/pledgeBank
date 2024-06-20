@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 const HomeLayout = () => {
   const user = useSelector((state) => state.userState.user);
-  console.log(user);
+
   return (
     <>
       {user && (
