@@ -8,7 +8,7 @@
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 2 phoenix browser"
+      "last 2 safari version"
     ]
   },
   "name": "portfolio",
