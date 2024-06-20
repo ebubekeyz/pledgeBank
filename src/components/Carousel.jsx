@@ -38,7 +38,7 @@ const list = [
     name: 'susan andersen',
     title: 'Trust and Reliability',
     quote: 'Your Trusted Partner in Financial Growth',
-    link: '/contact',
+    link: '/contacts',
     text: 'Contact',
   },
 ];
