@@ -120,7 +120,8 @@ const Wrapper = styled.aside`
       padding: 0rem 3rem;
       padding-top: 2rem;
       padding-bottom: 4rem;
-      height: 300%;
+      height: 330%;
+      bottom: 0;
       margin: 0 auto;
     }
     .power {
