@@ -101,7 +101,8 @@ const Login = () => {
         formAlert.style.background = 'transparent';
       }, 3000);
       popup.classList.remove('showPopup');
-      return navigate('/dashboard');
+      // return navigate('/dashboard');
+      return location.replace('/dashboard');
     } else {
       formAlert.textContent = `OTP Verification Failed`;
       formAlert.style.textAlign = 'center';
