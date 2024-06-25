@@ -243,11 +243,14 @@ then close all select boxes: */
       alertImg.classList.add('show2');
       nav('/dashboard/sendMoney');
     } else {
-      alert.innerHTML = 'Incorrect pin';
+      alert.innerHTML =
+        'Your transaction is unsuccessful. please contact support to resolve this issue.';
       alert.style.background = 'var(--clr-primary-8)';
+
       setTimeout(() => {
         alert.innerHTML = '';
         alert.style.background = 'none';
+        popup.classList.remove('showPopup');
       }, 3000);
     }
   };
