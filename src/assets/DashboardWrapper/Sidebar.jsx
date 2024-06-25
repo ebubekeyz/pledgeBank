@@ -8,6 +8,7 @@ const Wrapper = styled.aside`
     bottom: 0;
     width: 100%;
     height: 150%;
+
     background: rgba(0, 0, 0, 0.95);
     z-index: 4;
     padding-top: 1.5rem;

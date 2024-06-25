@@ -162,7 +162,7 @@ then close all select boxes: */
             placeholder="Enter your transfer pin"
           />
           <div className="custom-select">
-            <select name="bank" id="ms" className="">
+            <select name="bank" id="ms">
               <option value="Choose Bank">Choose Bank</option>
               <option value="Bank Of America">Bank Of America</option>
               <option value="Capital One">Capital One</option>
