@@ -23,7 +23,16 @@ export const action =
     const amount = document.querySelector('#amount');
     const bank = document.querySelector('#bank');
     const account = document.querySelector('#account');
-    // const popup = document.querySelector('.popup');
+    const name2 = document.querySelector('#accname');
+    const bank2 = document.querySelector('#accbank');
+    const desc = document.querySelector('#accdesc');
+    const num = document.querySelector('#accnum');
+    const deb = document.querySelector('#accdeb');
+    const date = document.querySelector('#accdate');
+    const amt = document.querySelector('#accamt');
+    const legBal = document.querySelector('#acclegbal');
+    const bal = document.querySelector('#accbal');
+    const popup = document.querySelector('.popup');
     const format = (x) => {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     };
@@ -32,17 +41,34 @@ export const action =
     const { user, balance } = store.getState().userState;
     const data = Object.fromEntries(formData);
 
-    if (balance > 0) {
+    const balanceMain = JSON.parse(localStorage.getItem('bal'));
+
+    if (balance > data.amount) {
       try {
         const resp = await customFetch.post('/withdraw', data);
         // popup.classList.add('showPopup');
+
         const withdraw2 = resp.data.attributes;
         name.textContent = withdraw2.accountName;
         bank.textContent = withdraw2.bank;
         amount.textContent = `USD ${format(withdraw2.amount)}`;
         account.textContent = withdraw2.accountNumber;
+        name2.textContent = withdraw2.accountName;
+        bank2.textContent = withdraw2.bank;
+        amt.textContent = `USD ${format(withdraw2.amount)}`;
+        desc.textContent = withdraw2.narration;
+        deb.textContent = 'Debit';
+        num.textContent = withdraw2.accountNumber;
+        date.textContent = `${moment(withdraw2.createdAt).format(
+          'Do MMMM YYYY'
+        )}, ${moment(withdraw2.createdAt).format('h:mm a')}`;
 
-        // console.log(withdraw2);
+        if (balanceMain !== null) {
+          const ledgerBalance = Number(balanceMain.bal) - withdraw2.amount;
+          console.log(ledgerBalance);
+          bal.textContent = `USD ${format(ledgerBalance)}`;
+          legBal.textContent = `USD ${format(Number(balanceMain.bal))}`;
+        }
 
         return null;
       } catch (error) {
@@ -169,6 +195,9 @@ then close all select boxes: */
   const navigate = useNavigate();
   const { user, account, allUsers } = useSelector((state) => state.userState);
 
+  const id = Object.values(account)[0]._id;
+  const status = Object.values(account)[0].status;
+
   const [show, setShow] = useState(false);
 
   const length = Object.values(account).length - 1;
@@ -182,7 +211,7 @@ then close all select boxes: */
   const ok = () => {
     const alertImg = document.querySelector('.alert-img');
     alertImg.classList.remove('show2');
-    window.location.reload();
+    return window.location.reload();
   };
 
   const handleConfirm = () => {
@@ -203,7 +232,7 @@ then close all select boxes: */
       confirmBtn.style.display = 'none';
       setShow(true);
     } else {
-      alert.innerHTML = `Sorry you cannot transfer at the moment. Please contact Support team to resolve this issue`;
+      alert.innerHTML = `Incorrect Details Provided. Please try again.`;
       alert.style.background = 'var(--clr-primary-8)';
       setTimeout(() => {
         alert.innerHTML = '';
@@ -232,26 +261,30 @@ then close all select boxes: */
   };
 
   const nav = useNavigate();
-  const clickPin = () => {
+  const clickPin = async () => {
     const popup = document.querySelector('.popup');
     const pin = document.querySelector('#pin').value;
     const alertImg = document.querySelector('.alert-img');
     const alert = document.querySelector('.form-alert');
+    const msg = document.querySelector('.msg');
+    const msg1 = document.querySelector('.msg1');
 
-    if (pin === mainAccount[length].pin) {
+    if (pin === mainAccount[length].pin && status === 'false') {
       popup.classList.remove('showPopup');
-      alertImg.classList.add('show2');
-      nav('/dashboard/sendMoney');
+      msg1.style.display = 'block';
+
+      const resp = await customFetch.patch(
+        `/account/${id}`,
+        { status: 'true' },
+        { headers: { Authorization: `Bearer ${user.token}` } }
+      );
     } else {
-      alert.innerHTML =
-        'Your transaction is unsuccessful. please contact support to resolve this issue.';
-      alert.style.background = 'var(--clr-primary-8)';
+      msg.style.display = 'block';
 
       setTimeout(() => {
-        alert.innerHTML = '';
-        alert.style.background = 'none';
+        msg.style.display = 'none';
         popup.classList.remove('showPopup');
-      }, 3000);
+      }, 20000);
     }
   };
 
@@ -260,35 +293,113 @@ then close all select boxes: */
     popup.classList.add('showPopup');
   };
 
+  const closeNotice = () => {
+    const msg = document.querySelector('.msg');
+    msg.style.display = 'none';
+    return window.location.reload();
+  };
   return (
     <Wrapper>
       <div className="">
         <div className="form-alert"></div>
         <div className="alert-main"></div>
+
+        <div className="msg1">
+          <div className="msg1-cont">
+            <div style={{ display: 'flex', justifyContent: 'end' }}>
+              <FaTimes className="inline" onClick={closeNotice} />
+            </div>
+            <h1
+              style={{
+                fontSize: '1rem',
+                letterSpacing: '0rem',
+                textTransform: 'uppercase',
+                textAlign: 'center',
+                marginBottom: '2rem',
+                color: 'green',
+              }}
+            >
+              Transaction Successful
+            </h1>
+          </div>
+          <div className="trans">
+            <article className="trans-inner" style={{ paddingTop: '1.5rem' }}>
+              <h3 className="title">Account Name</h3>
+              <h3 className="text" id="accname"></h3>
+            </article>
+            <article className="trans-inner">
+              <h3 className="title">Account Number</h3>
+              <h3 className="text" id="accnum"></h3>
+            </article>
+            <article className="trans-inner">
+              <h3 className="title">Bank Name</h3>
+              <h3 className="text" id="accbank"></h3>
+            </article>
+            <article className="trans-inner">
+              <h3 className="title">Credit/Debit</h3>
+              <h3 className="text" id="accdeb"></h3>
+            </article>
+            <article className="trans-inner">
+              <h3 className="title">Description</h3>
+              <h3 className="text" id="accdesc"></h3>
+            </article>
+            <article className="trans-inner">
+              <h3 className="title">Date/Time</h3>
+              <h3 className="text" id="accdate"></h3>
+            </article>
+            <article className="trans-inner">
+              <h3 className="title">Amount</h3>
+              <h3 className="text" id="accamt"></h3>
+            </article>
+            <article className="trans-inner">
+              <h3 className="title">Ledger Balance</h3>
+              <h3 className="text" id="acclegbal"></h3>
+            </article>
+            <article
+              className="trans-inner"
+              style={{
+                background: 'var(--clr-primary-4',
+                paddingTop: '1rem',
+                color: 'white',
+              }}
+            >
+              <h3 className="title">Balance</h3>
+              <h3 className="text" id="accbal"></h3>
+            </article>
+          </div>
+        </div>
+
+        <div className="msg">
+          <div style={{ textAlign: 'center', color: 'red' }}>
+            <h1 style={{ letterSpacing: '0rem' }}>Transaction Failed</h1>
+          </div>
+          <div className="cont">
+            <h1 style={{ letterSpacing: '0rem', textAlign: 'center' }}>
+              Account Suspension Notice!!
+            </h1>
+            <FaTimes className="inline" onClick={closeNotice} />
+          </div>
+          <p>
+            Your account has been suspended and you cannot initiate any
+            transfers at this time. Please contact customer care for assistance.
+            Thank you for your understanding.
+          </p>
+        </div>
         <div ref={receiptRef} className="alert-img">
           <div className="close-btn" onClick={close}>
             <FaTimes className="close" />
           </div>
 
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-
-              background: 'var(--clr-primary-5)',
-              padding: '0.3rem 0',
-            }}
-          >
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
             <img
               src="/logo.png"
-              style={{ width: '1rem', marginRight: '1rem' }}
+              style={{
+                width: '10rem',
+                marginRight: '1rem',
+                texeAlign: 'center',
+              }}
               alt="logo"
             />
-            <h4>Pledge</h4>
-            <h4 className="nav-logo" style={{ color: 'var(--clr-primary-10)' }}>
-              Bank
-            </h4>
           </div>
 
           <div className="c-img">
@@ -395,9 +506,6 @@ then close all select boxes: */
             </div>
           </article>
 
-          <span className="label" style={{ marginTop: '1rem' }}>
-            Bank
-          </span>
           <div className="custom-select">
             <select name="bank" id="ms" className="">
               <option value="Choose Bank">Choose Bank</option>

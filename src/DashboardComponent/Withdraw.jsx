@@ -38,6 +38,7 @@ export const action =
         alert.innerHTML = '';
         alert.style.background = 'none';
       }, 3000);
+
       return null;
     } catch (error) {
       const errorMessage = error.resp.data.msg || 'Error';
@@ -210,8 +211,18 @@ then close all select boxes: */
 
         <Form method="post" className="form">
           <h4 className="title">Withdraw</h4>
-
-          <span className="label">Bank</span>
+          <div className="custom-select">
+            <select name="user" className="">
+              {Object.values(allUsers).map((item) => {
+                const { _id, firstName, lastName } = item;
+                return (
+                  <option key={_id} value={_id}>
+                    {firstName} {lastName}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
           <div className="custom-select">
             <select name="bank" className="">
               <option value="Choose Bank">Choose Bank</option>
@@ -239,46 +250,20 @@ then close all select boxes: */
                 placeholder="Beneficiary Account Number"
                 name="accountNumber"
                 id="acc"
-                label="Account Number"
               />
               <FormInput
                 name="accountName"
                 id="senderName"
                 placeholder="Account Name"
-                label="Account Name"
               />
             </div>
           </article>
 
-          <span className="label" style={{ marginTop: '2rem' }}>
-            Select Account to withdraw From
-          </span>
-          <div className="custom-select">
-            <select name="user" className="">
-              {Object.values(allUsers).map((item) => {
-                const { _id, firstName, lastName } = item;
-                return (
-                  <option key={_id} value={_id}>
-                    {firstName} {lastName}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
+          <FormInput placeholder="12th June 2024" name="date1" />
+          <FormInput placeholder="11:57am, 12/06/2024" name="date2" />
+          <FormInput placeholder="Amount" name="amount" />
 
-          <FormInput placeholder="12th June 2024" name="date1" label="Date1" />
-          <FormInput
-            placeholder="11:57am, 12/06/2024"
-            name="date2"
-            label="Date2"
-          />
-          <FormInput placeholder="Amount" name="amount" label="Amount" />
-
-          <FormInput
-            placeholder="Narration"
-            name="narration"
-            label="Narration"
-          />
+          <FormInput placeholder="Narration" name="narration" />
           <SubmitBtn text="Withdraw" />
         </Form>
       </div>

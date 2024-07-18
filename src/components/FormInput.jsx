@@ -26,7 +26,6 @@ const FormInput = ({
           onChange={onChange}
           placeholder={placeholder}
           value={value}
-          required
           className="input"
         />
       </div>

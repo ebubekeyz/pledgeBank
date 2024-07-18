@@ -1,38 +1,47 @@
-import { Form, redirect, useLoaderData } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Form, redirect } from 'react-router-dom';
+import Wrapper from '../assets/Register';
 import { FormInput, SubmitBtn } from '../components';
 import { customFetch } from '../utils';
-import Wrapper from '../assets/DashboardWrapper/SetTransferDetails';
 import { useEffect } from 'react';
 
 export const action =
   (store) =>
   async ({ request }) => {
-    const { user } = store.getState().userState;
+    const user = store.getState().userState.user;
     const alert = document.querySelector('.form-alert');
 
     const formData = await request.formData();
     let data = Object.fromEntries(formData);
-    const account = store.getState().userState.account;
 
-    const id = Object.values(account)[0]._id;
+    const formData2 = new FormData();
 
-    data = { ...data, status: 'false' };
+    formData2.append('image', data.passport);
+
+    const response = await customFetch.post('/upload', formData2);
+
+    let passport = response.data.image.src;
+    console.log(passport);
+
+    data = {
+      ...data,
+      passport: response.data.image.src,
+    };
 
     try {
-      const resp = await customFetch.patch(`/account/${id}`, data, {
+      const resp = await customFetch.patch(`/auth/${data.user2}`, data, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
       });
-
-      alert.innerHTML = 'Update Successful';
+      alert.innerHTML = `Passport Updated Successfully`;
       alert.style.background = 'var(--clr-primary-8)';
       setTimeout(() => {
         alert.innerHTML = '';
         alert.style.background = 'none';
       }, 3000);
-      window.location.reload();
-      return redirect('/dashboard/set-transfer-details');
+
+      return redirect('/dashboard/changePhoto');
     } catch (error) {
       const errorMessage = error.resp.data.msg || 'Error';
       alert.textContent = errorMessage;
@@ -46,12 +55,13 @@ export const action =
         alert.style.background = 'none';
         alert.style.background = 'transparent';
       }, 3000);
-
       return null;
     }
+    return null;
   };
 
-const SetTransferDetails = () => {
+const ChangePhoto = () => {
+  const { allUsers, user } = useSelector((state) => state.userState);
   const select = () => {
     let x, i, j, l, ll, selElmnt, a, b, c;
     /* Look for any elements with the class "custom-select": */
@@ -140,52 +150,53 @@ then close all select boxes: */
     document.addEventListener('click', closeAllSelect);
   };
 
-  //   window.addEventListener('DOMContentLoaded', () => {
-  //     select();
-  //   });
   useEffect(() => {
     select();
   }, []);
+
+  let pass =
+    process.env.NODE_ENV !== 'production'
+      ? 'http://localhost:7000'
+      : 'https://pledgebank.onrender.com';
+
   return (
     <Wrapper>
-      <div className="form">
-        <h4>Edit Transfer Details</h4>
+      <div className="container" style={{ margin: '2rem 0' }}>
         <div className="form-alert"></div>
-        <Form method="patch">
-          <FormInput type="text" name="name" placeholder="Account Name" />
-          <FormInput
-            type="text"
-            name="accountNumber"
-            placeholder="Account Number"
-          />
-          <FormInput
-            type="text"
-            name="pin"
-            placeholder="Enter your transfer pin"
-          />
+        <h4>Update Users</h4>
+        <Form method="patch" encType="multipart/form-data">
           <div className="custom-select">
-            <select name="bank" id="ms">
-              <option value="Choose Bank">Choose Bank</option>
-              <option value="Bank Of America">Bank Of America</option>
-              <option value="Capital One">Capital One</option>
-              <option value="Chase Bank (Jp Morgan Chase)">
-                Chase Bank (Jp Morgan Chase)
-              </option>
-              <option value="Citibank">Citibank</option>
-              <option value="Fifth Third Bank">Fifth Third Bank</option>
-              <option value="HSBC">HSBC</option>
-              <option value="PNC Bank">PNC Bank</option>
-              <option value="Santander">Santander</option>
-              <option value="Truist Bank">Truist Bank</option>
-              <option value="U.S. Bancorp">U.S. Bancorp</option>
-              <option value="USAA">USAA</option>
-              <option value="Wells Fargo Bank">Wells Fargo Bank</option>
+            <select name="user2" id="ms" className="">
+              {Object.values(allUsers).map((item) => {
+                const { _id, firstName, lastName } = item;
+                return (
+                  <option key={_id} value={_id}>
+                    {firstName} {lastName}
+                  </option>
+                );
+              })}
             </select>
           </div>
-          <SubmitBtn text="update" />
+
+          <div className="upload">
+            {/* start */}
+
+            <div className="mb-6 pt-4">
+              <div className="formbold-mb-5 formbold-file-input">
+                <input type="file" name="passport" id="file" />
+              </div>
+            </div>
+
+            <div>
+              <button className="formbold-btn w-full">Upload Passport</button>
+            </div>
+            {/* end */}
+          </div>
+
+          <SubmitBtn text="save" />
         </Form>
       </div>
     </Wrapper>
   );
 };
-export default SetTransferDetails;
+export default ChangePhoto;

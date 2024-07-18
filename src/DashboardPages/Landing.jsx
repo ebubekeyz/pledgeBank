@@ -30,7 +30,12 @@ const Landing = () => {
   const { withdrawBalance, balance, deposit, user } = useSelector(
     (state) => state.userState
   );
+
   const totalBalance = balance - withdrawBalance;
+  const bal = {
+    bal: totalBalance,
+  };
+  localStorage.setItem('bal', JSON.stringify(bal));
 
   const { accountNumber, typeOfAccount, updatedAt } = user;
 
@@ -50,7 +55,6 @@ const Landing = () => {
   const format = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
-
 
   return (
     <Wrapper>

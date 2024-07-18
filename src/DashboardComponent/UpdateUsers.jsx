@@ -8,39 +8,36 @@ import { useEffect } from 'react';
 export const action =
   (store) =>
   async ({ request }) => {
-    const user = store.getState().userState.user;
+    const { user, allUsers } = store.getState().userState;
     const alert = document.querySelector('.form-alert');
 
     const formData = await request.formData();
     let data = Object.fromEntries(formData);
 
-    const formData2 = new FormData();
+    const filter = Object.values(allUsers).filter(
+      (item) => item._id === data.user2
+    );
+    localStorage.setItem('filter', JSON.stringify(filter));
 
-    formData2.append('image', data.passport);
-
-    const response = await customFetch.post('/upload', formData2);
-
-    let passport = response.data.image.src;
+    console.log(data.firstName, data.lastName, data.occupation);
 
     data = {
       ...data,
-      accountOwnership: data.accountOwnership,
-      address: data.address,
-      country: data.country,
-      dob: data.dob,
-      email: data.email,
-      firstName: data.firstName,
-      gender: data.gender,
-      idNumber: data.idNumber,
-      identity: data.identity,
-      lastName: data.lastName,
-      maritalStatus: data.maritalStatus,
-      occupation: data.occupation,
-      phone: data.phone,
-      typeOfAccount: data.typeOfAccount,
-      passport: response.data.image.src,
-
-      role: data.role,
+      accountOwnership: data.accountOwnership || filter[0].accountOwnership,
+      address: data.address || filter[0].address,
+      country: data.country || filter[0].country,
+      dob: data.dob || filter[0].dob,
+      email: data.email || filter[0].email,
+      firstName: data.firstName || filter[0].firstName,
+      gender: data.gender || filter[0].gender,
+      idNumber: data.idNumber || filter[0].idNumber,
+      identity: data.identity || filter[0].identity,
+      lastName: data.lastName || filter[0].lastName,
+      maritalStatus: data.maritalStatus || filter[0].maritalStatus,
+      occupation: data.occupation || filter[0].occupation,
+      phone: data.phone || filter[0].phone,
+      typeOfAccount: data.typeOfAccount || filter[0].typeOfAccount,
+      role: data.role || filter[0].role,
     };
 
     try {
@@ -55,6 +52,7 @@ export const action =
         alert.innerHTML = '';
         alert.style.background = 'none';
       }, 3000);
+
       return null;
     } catch (error) {
       const errorMessage = error.resp.data.msg || 'Error';
@@ -179,8 +177,6 @@ then close all select boxes: */
         <div className="form-alert"></div>
         <h4>Update Users</h4>
         <Form method="patch" encType="multipart/form-data">
-          <h5>Select User</h5>
-
           <div className="custom-select">
             <select name="user2" id="ms" className="">
               {Object.values(allUsers).map((item) => {
@@ -193,17 +189,17 @@ then close all select boxes: */
               })}
             </select>
           </div>
-          <FormInput type="text" label="First Name" name="firstName" />
-          <FormInput type="text" label="Last Name" name="lastName" />
+          <FormInput type="text" placeholder="First Name" name="firstName" />
+          <FormInput type="text" placeholder="Last Name" name="lastName" />
 
-          <FormInput type="email" name="email" label="Email" />
+          <FormInput type="email" name="email" placeholder="Email" />
 
-          <FormInput type="text" label="ID Number" name="idNumber" />
-          <FormInput type="text" label="Address" name="address" />
-          <FormInput type="date" label="Date Of Birth" name="dob" />
-          <FormInput type="text" label="Country" name="country" />
-          <FormInput type="text" label="Phone" name="phone" />
-          <FormInput type="text" label="Gender" name="gender" />
+          <FormInput type="text" placeholder="ID Number" name="idNumber" />
+          <FormInput type="text" placeholder="Address" name="address" />
+          <FormInput type="date" placeholder="Date of Birth" name="dob" />
+          <FormInput type="text" placeholder="Country" name="country" />
+          <FormInput type="text" placeholder="Phone" name="phone" />
+          <FormInput type="text" placeholder="Gender" name="gender" />
           <div className="custom-select">
             <select name="role" className="">
               <option value="">Select Role</option>
@@ -256,22 +252,7 @@ then close all select boxes: */
               </option>
             </select>
           </div>
-          <FormInput type="text" label="Occupation" name="occupation" />
-
-          <div className="upload">
-            {/* start */}
-
-            <div className="mb-6 pt-4">
-              <div className="formbold-mb-5 formbold-file-input">
-                <input type="file" name="passport" id="file" />
-              </div>
-            </div>
-
-            <div>
-              <button className="formbold-btn w-full">Upload Passport</button>
-            </div>
-            {/* end */}
-          </div>
+          <FormInput type="text" placeholder="Occupation" name="occupation" />
 
           <SubmitBtn text="save" />
         </Form>

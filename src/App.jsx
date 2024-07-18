@@ -39,6 +39,9 @@ import { loader as LandingLoader } from './DashboardPages/Landing';
 import { loader as SendMoneyLoader } from './DashboardPages/SendMoney';
 import { loader as AdminDepositLoader } from './DashboardPages/AdminDeposit';
 import { loader as DepositLoader } from './DashboardPages/Deposit';
+import ChangePhoto, {
+  loader as ChangePhotoLoader,
+} from './DashboardPages/ChangePhoto';
 import { loader as AccountLoader } from './DashboardPages/Account';
 import { loader as NotificationLoader } from './DashboardPages/Notification';
 import NotificationMessage, {
@@ -49,6 +52,7 @@ import AccountInfo, {
 } from './DashboardPages/AccountInfo';
 import Security, { loader as SecurityLoader } from './DashboardPages/Security';
 
+import { action as ChangePhotoAction } from './DashboardComponent/ChangePhoto';
 import { action as SendMoneyAction } from './DashboardComponent/SendMoney';
 import { action as ChangePasswordAction } from './DashboardComponent/ChangePassword';
 import { action as WithdrawAction } from './DashboardComponent/Withdraw';
@@ -307,6 +311,13 @@ const router = createBrowserRouter([
         path: '/dashboard/users',
         element: <Users />,
         loader: UsersLoader(store),
+      },
+      {
+        path: '/dashboard/changePhoto',
+        element: <ChangePhoto />,
+        errorElement: <DashboardErrorElement />,
+        action: ChangePhotoAction(store),
+        loader: ChangePhotoLoader(store),
       },
       {
         path: '/dashboard/transaction',

@@ -27,7 +27,6 @@ export const action =
         alert.innerHTML = '';
         alert.style.background = 'none';
       }, 3000);
-
       return null;
     } catch (error) {
       const errorMessage =
@@ -143,14 +142,6 @@ const AdminDeposit = () => {
         <div className="form-alert"></div>
         <Form method="post">
           <h4 className="title">Deposit Money</h4>
-          <FormInput
-            name="accountName"
-            placeholder="Type any Name"
-            label="Sender Name"
-            type="text"
-          />
-
-          <span className="label">Select Account you want to Deposit into</span>
           <div className="custom-select">
             <select name="user" id="ms" className="">
               {Object.values(allUsers).map((item) => {
@@ -163,6 +154,7 @@ const AdminDeposit = () => {
               })}
             </select>
           </div>
+          <FormInput name="accountName" placeholder="Sender Name" type="text" />
 
           <input
             type="text"
@@ -172,7 +164,6 @@ const AdminDeposit = () => {
             hidden
           />
 
-          <span className="label">Receiver's Bank</span>
           <div className="custom-select">
             <select name="bank" id="ms" className="">
               <option value="">Choose Bank</option>
@@ -195,26 +186,13 @@ const AdminDeposit = () => {
 
           {user.role === 'admin' || user.role === 'owner' ? (
             <div className="">
-              <FormInput
-                placeholder="12th June 2024"
-                name="date1"
-                label="Date1"
-              />
-              <FormInput
-                placeholder="11:57am, 12/06/2024"
-                name="date2"
-                label="label2"
-              />
+              <FormInput placeholder="12th June 2024" name="date1" />
+              <FormInput placeholder="11:57am, 12/06/2024" name="date2" />
             </div>
           ) : (
             ''
           )}
-          <FormInput
-            name="amount"
-            placeholder="Amount"
-            type="text"
-            label="amount"
-          />
+          <FormInput name="amount" placeholder="Amount" type="text" />
           <SubmitBtn text="deposit" />
         </Form>
       </div>
