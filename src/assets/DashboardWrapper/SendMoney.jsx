@@ -149,7 +149,7 @@ const Wrapper = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 3rem 2rem;
+    padding: 1rem 2rem;
     border-radius: var(--radius);
     box-shadow: var(--light-shadow);
     display: none;
@@ -239,12 +239,12 @@ const Wrapper = styled.div`
     text-transform: capitalize;
     font-size: 1rem;
     font-weight: 700;
-    color: var(--clr-grey-8);
+    color: var(--clr-grey-5);
   }
   .transfer-btn {
     text-transform: uppercase;
     background: var(--clr-primary-5);
-    color: var(--clr-primary-1);
+    color: var(--clr-grey-1);
     padding: 0.375rem 0.75rem;
     letter-spacing: var(--spacing);
     display: inline-block;
@@ -260,8 +260,8 @@ const Wrapper = styled.div`
     text-align: center;
   }
   .transfer-btn:hover {
-    color: var(--clr-primary-1);
-    background: var(--clr-primary-7);
+    color: var(--clr-grey-10);
+    background: var(--clr-primary-5);
   }
   .showPopup {
     display: grid;
@@ -275,18 +275,85 @@ const Wrapper = styled.div`
     border-radius: var(--radius);
   }
 
+  .msg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--clr-grey-10);
+    padding: 2rem;
+    z-index: 50;
+    width: 90%;
+    max-width: 30rem;
+    display: none;
+  }
+  .msg1 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2rem;
+    display: none;
+    z-index: 50;
+    width: 90%;
+    max-width: 30rem;
+  }
+
+  .trans-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .trans-inner h3 {
+    font-size: 0.9rem;
+    letter-spacing: 0rem;
+  }
+
+  .trans {
+    border: 1px solid var(--clr-primary-4);
+    padding: 0rem 0rem;
+    padding-bottom: 0;
+  }
+  .trans-inner h3 {
+    padding: 0 1rem;
+  }
+  .msg h1 {
+    font-size: 1.2rem;
+  }
+  .cont {
+    display: flex;
+    justify-content: space-between;
+  }
+  .inline {
+    color: red;
+    cursor: pointer;
+  }
+  .msg p {
+    color: var(--clr-grey-4);
+  }
+
   .input:focus {
     outline: none;
   }
-
+  .main-btn {
+    display: none;
+  }
+  .pop {
+    display: none;
+  }
+  #sbtn {
+    display: none;
+  }
   .input::placeholder {
-    color: var(--clr-grey-7);
+    color: var(--clr-grey-6);
   }
   .label-text {
     text-transform: capitalize;
     font-size: 1rem;
     font-weight: 700;
-    color: var(--clr-grey-8);
+    color: var(--clr-grey-4);
   }
   @media screen and (min-width: 1300px) {
     .popup {

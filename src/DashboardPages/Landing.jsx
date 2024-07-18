@@ -15,7 +15,7 @@ import { formatPrice } from '../utils';
 import moment from 'moment';
 import { useEffect, useState } from 'react';
 import { FiRefreshCcw } from 'react-icons/fi';
-import { FaArrowAltCircleDown, FaRegIdCard } from 'react-icons/fa';
+import { FaArrowAltCircleDown, FaRegIdCard, FaTimes } from 'react-icons/fa';
 
 export const loader = (store) => async () => {
   const user = store.getState().userState.user;
@@ -39,7 +39,16 @@ const Landing = () => {
 
   const { accountNumber, typeOfAccount, updatedAt } = user;
 
+  const filterID = Object.values(deposit).filter(
+    (item) => item.user === user._id
+  );
+
+  const filterStatus = Object.values(filterID).filter(
+    (item) => item.status === 'processing'
+  );
+
   const [show, setShow] = useState(false);
+  const [show2, setShow2] = useState(true);
 
   const handleEye = () => {
     setShow(true);
@@ -56,6 +65,19 @@ const Landing = () => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
+  const removeAlert = async (id) => {
+    const resp = await customFetch.patch(
+      `/addFund/${id}`,
+      { status: 'sent' },
+      {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
+    setShow2(false);
+    window.location.reload('');
+  };
   return (
     <Wrapper>
       <div className="landing">
@@ -122,6 +144,52 @@ const Landing = () => {
           </div>
         </article>
       </div>
+
+      {show2 &&
+        filterStatus.slice(0, 1).map((item) => {
+          const { createdAt, amount, accountName, date1, date2, _id } = item;
+          return (
+            <article
+              key={_id}
+              className="transfer"
+              style={{ padding: '0.2rem 1rem', paddingTop: '0.8rem' }}
+            >
+              <div className="split">
+                {/* <h4 className="date">{date1}</h4> */}
+                <FaTimes
+                  onClick={() => removeAlert(_id)}
+                  style={{ cursor: 'pointer' }}
+                />
+              </div>
+              <div className="inner-transfer-cont">
+                <div className="details">
+                  <h4 className="name">Transfer from {accountName}</h4>
+                  <p>{date2}</p>
+                </div>
+
+                <div className="approve">
+                  <h5>Successful</h5>
+                  <h4 className="amount">USD {format(amount)}</h4>
+                </div>
+              </div>
+
+              <div className="more">
+                <a
+                  href="/dashboard/transaction"
+                  className="btn more-btn"
+                  style={{
+                    textTransform: 'capitalize',
+                    padding: '0.3rem',
+                    fontSize: '0.9rem',
+                    margin: '0',
+                  }}
+                >
+                  View All...
+                </a>
+              </div>
+            </article>
+          );
+        })}
 
       {/* {realDeposit.length > 0 ? (
         <article className="transfer">
