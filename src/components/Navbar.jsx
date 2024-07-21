@@ -72,23 +72,35 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/about" className="link">
-                about
-              </Link>
-            </li>
-            <li>
               <Link to="/services" className="link">
                 services
               </Link>
             </li>
             <li>
+              <Link to="/contacts" className="link">
+                contact
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" className="link">
+                about
+              </Link>
+            </li>
+
+            <li>
               <Link to="/faqs" className="link">
                 Faqs
               </Link>
             </li>
+
             <li>
-              <Link to="/contacts" className="link">
-                contact
+              <Link to="/login" className="link">
+                Login
+              </Link>
+            </li>
+            <li>
+              <Link to="/register" className="link">
+                Register
               </Link>
             </li>
           </ul>
