@@ -12,7 +12,7 @@
     ]
   },
   "name": "portfolio",
-  "homepage": "https://pledge-bank.com",
+  "homepage": ".",
   "private": true,
   "version": "0.0.0",
   "type": "module",
