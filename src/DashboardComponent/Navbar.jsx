@@ -53,10 +53,10 @@ const Navbar = ({ onClick }) => {
       ? 'http://localhost:5173'
       : 'https://pledge-bank.com';
 
-  let pass =
-    process.env.NODE_ENV !== 'production'
-      ? 'http://localhost:7000'
-      : 'https://pledgebank.onrender.com';
+  // let pass =
+  //   process.env.NODE_ENV !== 'production'
+  //     ? 'http://localhost:7000'
+  //     : 'https://pledgebank.onrender.com';
 
   // useEffect(() => {
   //   clickNotice();
@@ -98,19 +98,11 @@ const Navbar = ({ onClick }) => {
             </Link>
             {user.role === 'admin' || user.role === 'owner' ? (
               <Link to="/dashboard/passport" className="passport">
-                <img
-                  src={`${pass}${passport}`}
-                  alt="passport"
-                  className="pass"
-                />
+                <img src={`${passport}`} alt="passport" className="pass" />
               </Link>
             ) : (
               <div className="passport">
-                <img
-                  src={`${pass}${passport}`}
-                  alt="passport"
-                  className="pass"
-                />
+                <img src={`${passport}`} alt="passport" className="pass" />
               </div>
             )}
           </div>
