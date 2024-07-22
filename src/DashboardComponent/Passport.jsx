@@ -70,7 +70,7 @@ const Passport = () => {
         <Form method="patch" encType="multipart/form-data">
           <div className="passport">
             <img
-              src={`${pass}/${findImage.passport}`}
+              src={`${findImage.passport}`}
               alt="passport"
               className="pass"
             />
