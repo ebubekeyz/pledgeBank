@@ -118,212 +118,212 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 const router = createBrowserRouter([
-  // {
-  //   path: '/',
-  //   element: <HomeLayout />,
-  //   errorElement: <Error />,
-  //   children: [
-  //     {
-  //       index: true,
-  //       element: <Landing />,
-  //       errorElement: <ErrorElement />,
-  //     },
-  //     {
-  //       path: 'about',
-  //       element: <About />,
-  //     },
-  //     {
-  //       path: 'services',
-  //       element: <Projects />,
-  //     },
-  //     {
-  //       path: 'contacts',
-  //       element: <Contacts />,
-  //     },
-  //     {
-  //       path: 'request-form',
-  //       element: <Request />,
-  //       action: RequestAction,
-  //     },
-  //     {
-  //       path: 'faqs',
-  //       element: <Faqs />,
-  //     },
-  //     {
-  //       path: 'singleBlog/:id',
-  //       element: <SingleBlog />,
-  //       loader: SingleBlogLoader,
-  //     },
-  //     {
-  //       path: 'singleService/:id',
-  //       element: <SingleService />,
-  //       loader: SingleServiceLoader,
-  //     },
-  //     {
-  //       path: 'terms',
-  //       element: <Terms />,
-  //     },
-  //     {
-  //       path: 'privacy',
-  //       element: <Privacy />,
-  //     },
-  //   ],
-  // },
-  // {
-  //   path: 'login',
-  //   element: <Login />,
-  //   action: LoginAction(store),
-  // },
-  // {
-  //   path: 'passwordReset',
-  //   element: <PasswordReset />,
-  //   action: PasswordResetAction,
-  // },
-  // {
-  //   path: 'Register',
-  //   element: <Register />,
-  //   action: RegisterAction(store),
-  // },
-  // {
-  //   path: '/dashboard',
-  //   element: <DashboardHomeLayout />,
-  //   errorElement: <DashboardError />,
-  //   children: [
-  //     {
-  //       index: true,
-  //       element: <DashboardLanding />,
-  //       errorElement: <DashboardErrorElement />,
-  //       loader: LandingLoader(store),
-  //     },
-  //     {
-  //       path: '/dashboard/sendMoney',
-  //       element: <SendMoney />,
-  //       loader: SendMoneyLoader(store),
-  //       action: SendMoneyAction(store),
-  //     },
-  //     {
-  //       path: '/dashboard/adminDeposit',
-  //       element: <AdminDeposit />,
-  //       loader: AdminDepositLoader(store),
-  //       action: AdminDepositAction(store),
-  //     },
-  //     {
-  //       path: '/dashboard/deposit',
-  //       element: <Deposit />,
-  //       loader: DepositLoader(store),
-  //     },
-  //     {
-  //       path: '/dashboard/account',
-  //       element: <Account />,
-  //       loader: AccountLoader(store),
-  //       action: AccountAction(store),
-  //     },
-  //     {
-  //       path: '/dashboard/security',
-  //       element: <Security />,
-  //       loader: SecurityLoader(store),
-  //       action: SecurityAction(store),
-  //     },
-  //     {
-  //       path: '/dashboard/passport',
-  //       element: <Passport />,
-  //       loader: PassportLoader(store),
-  //       action: PassportAction(store),
-  //     },
-  //     {
-  //       path: '/dashboard/update',
-  //       element: <Update />,
-  //       loader: UpdateLoader(store),
-  //       action: UpdateWithdrawalAction(store),
-  //     },
-  //     {
-  //       path: '/dashboard/changePassword',
-  //       element: <ChangePassword />,
-  //       loader: ChangePasswordLoader(store),
-  //       action: ChangePasswordAction(store),
-  //     },
-  //     {
-  //       path: '/dashboard/set-transfer-details',
-  //       element: <SetTransferDetails />,
-  //       loader: SetTransferDetailsLoader(store),
-  //       action: SetTransferDetailsAction(store),
-  //     },
-  //     {
-  //       path: '/dashboard/updateDeposit',
-  //       element: <UpdateDeposit />,
-  //       loader: UpdateDepositLoader(store),
-  //       action: UpdateDepositAction(store),
-  //     },
-  //     {
-  //       path: '/dashboard/updateUsers',
-  //       element: <UpdateUsers />,
-  //       loader: UpdateUsersLoader(store),
-  //       action: UpdateUsersAction(store),
-  //     },
-  //     {
-  //       path: '/dashboard/addUser',
-  //       element: <AddUser />,
-  //       loader: AddUserLoader(store),
-  //       action: AddUserAction(store),
-  //     },
-  //     {
-  //       path: '/dashboard/withdraw',
-  //       element: <Withdraw />,
-  //       loader: WithdrawLoader(store),
-  //       action: WithdrawAction(store),
-  //     },
-  //     {
-  //       path: '/dashboard/delete',
-  //       element: <Delete />,
-  //       loader: DeleteLoader(store),
-  //     },
-  //     {
-  //       path: '/dashboard/notification',
-  //       element: <Notification />,
-  //       loader: NotificationLoader(store),
-  //     },
-  //     {
-  //       path: '/dashboard/cards',
-  //       element: <Cards />,
-  //       loader: CardsLoader(store),
-  //     },
-  //     {
-  //       path: '/dashboard/siteMap',
-  //       element: <SiteMap />,
-  //     },
-  //     {
-  //       path: '/dashboard/notificationMessage',
-  //       element: <NotificationMessage />,
-  //       action: NotificationMessageAction(store),
-  //     },
-  //     {
-  //       path: '/dashboard/accountInfo',
-  //       element: <AccountInfo />,
-  //       loader: AccountInfoLoader(store),
-  //     },
-  //     {
-  //       path: '/dashboard/users',
-  //       element: <Users />,
-  //       loader: UsersLoader(store),
-  //     },
-  //     {
-  //       path: '/dashboard/changePhoto',
-  //       element: <ChangePhoto />,
-  //       errorElement: <DashboardErrorElement />,
-  //       action: ChangePhotoAction(store),
-  //       loader: ChangePhotoLoader(store),
-  //     },
-  //     {
-  //       path: '/dashboard/transaction',
-  //       element: <Transaction />,
-  //       loader: TransactionLoader(store),
-  //     },
-  //     {
-  //       path: '/dashboard/incoming-transaction',
-  //       element: <Incoming />,
-  //     },
-  //   ],
-  // },
+  {
+    path: '/',
+    element: <HomeLayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        index: true,
+        element: <Landing />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: 'about',
+        element: <About />,
+      },
+      {
+        path: 'services',
+        element: <Projects />,
+      },
+      {
+        path: 'contacts',
+        element: <Contacts />,
+      },
+      {
+        path: 'request-form',
+        element: <Request />,
+        action: RequestAction,
+      },
+      {
+        path: 'faqs',
+        element: <Faqs />,
+      },
+      {
+        path: 'singleBlog/:id',
+        element: <SingleBlog />,
+        loader: SingleBlogLoader,
+      },
+      {
+        path: 'singleService/:id',
+        element: <SingleService />,
+        loader: SingleServiceLoader,
+      },
+      {
+        path: 'terms',
+        element: <Terms />,
+      },
+      {
+        path: 'privacy',
+        element: <Privacy />,
+      },
+    ],
+  },
+  {
+    path: 'login',
+    element: <Login />,
+    action: LoginAction(store),
+  },
+  {
+    path: 'passwordReset',
+    element: <PasswordReset />,
+    action: PasswordResetAction,
+  },
+  {
+    path: 'Register',
+    element: <Register />,
+    action: RegisterAction(store),
+  },
+  {
+    path: '/dashboard',
+    element: <DashboardHomeLayout />,
+    errorElement: <DashboardError />,
+    children: [
+      {
+        index: true,
+        element: <DashboardLanding />,
+        errorElement: <DashboardErrorElement />,
+        loader: LandingLoader(store),
+      },
+      {
+        path: '/dashboard/sendMoney',
+        element: <SendMoney />,
+        loader: SendMoneyLoader(store),
+        action: SendMoneyAction(store),
+      },
+      {
+        path: '/dashboard/adminDeposit',
+        element: <AdminDeposit />,
+        loader: AdminDepositLoader(store),
+        action: AdminDepositAction(store),
+      },
+      {
+        path: '/dashboard/deposit',
+        element: <Deposit />,
+        loader: DepositLoader(store),
+      },
+      {
+        path: '/dashboard/account',
+        element: <Account />,
+        loader: AccountLoader(store),
+        action: AccountAction(store),
+      },
+      {
+        path: '/dashboard/security',
+        element: <Security />,
+        loader: SecurityLoader(store),
+        action: SecurityAction(store),
+      },
+      {
+        path: '/dashboard/passport',
+        element: <Passport />,
+        loader: PassportLoader(store),
+        action: PassportAction(store),
+      },
+      {
+        path: '/dashboard/update',
+        element: <Update />,
+        loader: UpdateLoader(store),
+        action: UpdateWithdrawalAction(store),
+      },
+      {
+        path: '/dashboard/changePassword',
+        element: <ChangePassword />,
+        loader: ChangePasswordLoader(store),
+        action: ChangePasswordAction(store),
+      },
+      {
+        path: '/dashboard/set-transfer-details',
+        element: <SetTransferDetails />,
+        loader: SetTransferDetailsLoader(store),
+        action: SetTransferDetailsAction(store),
+      },
+      {
+        path: '/dashboard/updateDeposit',
+        element: <UpdateDeposit />,
+        loader: UpdateDepositLoader(store),
+        action: UpdateDepositAction(store),
+      },
+      {
+        path: '/dashboard/updateUsers',
+        element: <UpdateUsers />,
+        loader: UpdateUsersLoader(store),
+        action: UpdateUsersAction(store),
+      },
+      {
+        path: '/dashboard/addUser',
+        element: <AddUser />,
+        loader: AddUserLoader(store),
+        action: AddUserAction(store),
+      },
+      {
+        path: '/dashboard/withdraw',
+        element: <Withdraw />,
+        loader: WithdrawLoader(store),
+        action: WithdrawAction(store),
+      },
+      {
+        path: '/dashboard/delete',
+        element: <Delete />,
+        loader: DeleteLoader(store),
+      },
+      {
+        path: '/dashboard/notification',
+        element: <Notification />,
+        loader: NotificationLoader(store),
+      },
+      {
+        path: '/dashboard/cards',
+        element: <Cards />,
+        loader: CardsLoader(store),
+      },
+      {
+        path: '/dashboard/siteMap',
+        element: <SiteMap />,
+      },
+      {
+        path: '/dashboard/notificationMessage',
+        element: <NotificationMessage />,
+        action: NotificationMessageAction(store),
+      },
+      {
+        path: '/dashboard/accountInfo',
+        element: <AccountInfo />,
+        loader: AccountInfoLoader(store),
+      },
+      {
+        path: '/dashboard/users',
+        element: <Users />,
+        loader: UsersLoader(store),
+      },
+      {
+        path: '/dashboard/changePhoto',
+        element: <ChangePhoto />,
+        errorElement: <DashboardErrorElement />,
+        action: ChangePhotoAction(store),
+        loader: ChangePhotoLoader(store),
+      },
+      {
+        path: '/dashboard/transaction',
+        element: <Transaction />,
+        loader: TransactionLoader(store),
+      },
+      {
+        path: '/dashboard/incoming-transaction',
+        element: <Incoming />,
+      },
+    ],
+  },
 ]);
 
 const App = () => {
