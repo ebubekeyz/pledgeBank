@@ -222,17 +222,13 @@ then close all select boxes: */
     const ms = document.querySelector('#ms').value;
     const acc = document.querySelector('#acc').value;
 
-    if (
-      acc !== '' &&
-      acc === mainAccount[length].accountNumber &&
-      ms === mainAccount[length].bank
-    ) {
+    if (acc !== '') {
       inputShow.classList.add('show');
-      name.value = mainAccount[length].name;
+
       confirmBtn.style.display = 'none';
       setShow(true);
     } else {
-      alert.innerHTML = `Incorrect Details Provided. Please try again.`;
+      alert.innerHTML = `Please provide account number`;
       alert.style.background = 'var(--clr-primary-8)';
       setTimeout(() => {
         alert.innerHTML = '';
