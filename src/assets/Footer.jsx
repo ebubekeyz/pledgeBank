@@ -45,7 +45,7 @@ const Wrapper = styled.div`
   .footer p {
     text-align: center;
     font-size: 1rem;
-    text-transform: capitalize;
+    text-transform: lowercase;
   }
 `;
 

@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.svg';
 import Wrapper from '../assets/Navbar';
-import { FaBarsStaggered } from 'react-icons/fa6';
+
 import Sidebar from './Sidebar';
 import { FaTimes } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import { AiFillBank } from "react-icons/ai";
+import { HiMiniBars3 } from "react-icons/hi2";
 
 const Navbar = () => {
   window.addEventListener('scroll', function () {
@@ -56,27 +58,29 @@ const Navbar = () => {
         <div className="nav-center">
           {/* nav header  */}
           <div className="nav-header">
-            <h1 className="nav-logo">
+             
+            <div className="nav-logo">
               {/* <span className="pb">Pb</span> */}
-              Pledge <span className="inner">Bank</span>
-            </h1>
+               <AiFillBank style={{fontSize: '2rem', marginRight: '0.7rem'}} />
+             Pledge<span className="inner">Bank</span>
+            </div>
             <button className="nav-btn" id="nav-btn">
-              <FaBarsStaggered onClick={handleToggle} />
+              <HiMiniBars3  onClick={handleToggle} />
             </button>
           </div>
           {/* nav-links  */}
           <ul className="nav-links">
             <li>
-              <Link to="/" className="link">
+              <Link to="/" className="link first">
                 home
               </Link>
             </li>
-            <li>
+             <li>
               <Link to="/services" className="link">
                 services
               </Link>
             </li>
-            <li>
+             <li>
               <Link to="/contacts" className="link">
                 contact
               </Link>
@@ -86,14 +90,14 @@ const Navbar = () => {
                 about
               </Link>
             </li>
-
+           
             <li>
               <Link to="/faqs" className="link">
                 Faqs
               </Link>
             </li>
-
-            <li>
+           
+             <li>
               <Link to="/login" className="link">
                 Login
               </Link>

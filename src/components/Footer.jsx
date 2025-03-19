@@ -31,8 +31,8 @@ const Footer = () => {
           </li>
         </ul>
 
-        <p>
-          &copy; <span id="date">{footer}</span> pledge-bank.online. all rights
+        <p style={{textTransform: 'sentence-case'}}>
+          &copy; <span id="date">{footer}</span> https://pledge-bank.com. All rights
           reserved
         </p>
       </footer>

@@ -20,3 +20,4 @@ export { default as FormSelect } from './FormSelect';
 export { default as Founders } from './Founders';
 export { default as Faqs } from './Faqs';
 export { default as TextAreaInput } from './TextAreaInput';
+export {default as TopHeader} from './TopHeader'

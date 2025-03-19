@@ -197,6 +197,9 @@ then close all select boxes: */
 
   const id = Object.values(account)[0]._id;
   const status = Object.values(account)[0].status;
+  const accountNumber = Object.values(account)[0].accountNumber;
+  const accountName = Object.values(account)[0].name;
+  const routeNumber = Object.values(account)[0].routingNumber;
 
   const [show, setShow] = useState(false);
 
@@ -219,16 +222,18 @@ then close all select boxes: */
     const inputShow = document.querySelector('.input-show');
     const confirmBtn = document.querySelector('.confirm-btn');
     const alert = document.querySelector('.form-alert');
+    const routingNumber = document.querySelector('#routingNumber').value;
+    const acctName = document.querySelector('#senderName');
     const ms = document.querySelector('#ms').value;
     const acc = document.querySelector('#acc').value;
 
-    if (acc !== '') {
+    if (acc !== '' && routingNumber !== '' && acc === accountNumber && routingNumber === routeNumber ) {
       inputShow.classList.add('show');
-
+      acctName.value = accountName;
       confirmBtn.style.display = 'none';
       setShow(true);
     } else {
-      alert.innerHTML = `Please provide account number`;
+      alert.innerHTML = `Invalid Account Number or Routing Number`;
       alert.style.background = 'var(--clr-primary-8)';
       setTimeout(() => {
         alert.innerHTML = '';
@@ -529,6 +534,12 @@ then close all select boxes: */
                 placeholder="Beneficiary Account Number"
                 name="accountNumber"
                 id="acc"
+              />
+
+               <FormInput
+                placeholder="Routing Number"
+                name="routingNumber"
+                id="routingNumber"
               />
 
               <div className="input-show" style={{ width: '100%' }}>

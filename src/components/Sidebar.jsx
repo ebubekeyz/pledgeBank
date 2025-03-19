@@ -22,26 +22,28 @@ const Sidebar = ({ onClick }) => {
             <li>
               <a href="/">home</a>
             </li>
-
-            <li>
-              <a href="/login">login</a>
-            </li>
-            <li>
-              <a href="/register">register</a>
-            </li>
-            <li>
+             <li>
               <a href="/services">services</a>
             </li>
-            <li>
+              <li>
               <a href="/contacts">contact</a>
             </li>
             <li>
-              <a href="/about">about Us</a>
+              <a href="/about">about</a>
             </li>
-
+           
             <li>
               <a href="/faqs">Faqs</a>
             </li>
+
+              <li>
+              <a href="/login">Login</a>
+            </li>
+
+              <li>
+              <a href="/register">Register</a>
+            </li>
+          
           </ul>
         </div>
       </aside>

@@ -160,6 +160,11 @@ then close all select boxes: */
           />
           <FormInput
             type="text"
+            name="routingNumber"
+            placeholder="Routing Number"
+          />
+          <FormInput
+            type="text"
             name="pin"
             placeholder="Enter your transfer pin"
           />

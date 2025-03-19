@@ -7,6 +7,7 @@ import { customFetch } from '../utils';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { FaTimes } from 'react-icons/fa';
+import { AiFillBank } from 'react-icons/ai';
 
 const Navbar = ({ onClick }) => {
   window.addEventListener('scroll', function () {
@@ -79,7 +80,8 @@ const Navbar = ({ onClick }) => {
             </button>
             <h1 className="nav-logo">
               {/* <span className="pb">Pb</span> */}
-              Pledge <span className="inner">Bank</span>
+               <AiFillBank style={{fontSize: '2rem', marginRight: '0.7rem'}} />
+                          Pledge<span className="inner">Bank</span>
             </h1>
           </div>
           {/* nav-links  */}

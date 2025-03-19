@@ -4,9 +4,12 @@ const Wrapper = styled.div`
   .inner {
     color: var(--clr-primary-5);
   }
-  .nav-logo {
+   .nav-logo {
+    display: flex;
+    align-items: center;
     font-size: 1.5rem;
-    letter-spacing: 0.5rem;
+    font-weight:bold;
+    letter-spacing: 0.1rem;
     text-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
   }
   .passport,

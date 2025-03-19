@@ -21,6 +21,8 @@ const Deposit = () => {
   const [copyText, setCopyText] = useState({
     name: `${user.firstName}  ${user.lastName} `,
     number: user.accountNumber,
+    phone: user.phone,
+     routingNumber: user.routingNumber || 623852453,
     sortCode: user.sortCode,
     bank: 'Pledge Bank',
   });
@@ -56,6 +58,31 @@ const Deposit = () => {
       alert.style.background = 'none';
     }, 3000);
   };
+
+const handleCopy5 = () => {
+    const alert = document.querySelector('.form-alert');
+    copy(copyText.phone);
+    alert.innerHTML = `${copyText.phone} copied!!`;
+    alert.style.background = 'var(--clr-primary-8)';
+    setTimeout(() => {
+      alert.innerHTML = '';
+      alert.style.background = 'none';
+    }, 3000);
+  };
+
+
+  const handleCopy6 = () => {
+    const alert = document.querySelector('.form-alert');
+    copy(copyText.routingNumber);
+    alert.innerHTML = `${copyText.routingNumber} copied!!`;
+    alert.style.background = 'var(--clr-primary-8)';
+    setTimeout(() => {
+      alert.innerHTML = '';
+      alert.style.background = 'none';
+    }, 3000);
+  };
+
+
   const handleCopy4 = () => {
     const alert = document.querySelector('.form-alert');
     copy(copyText.bank);
@@ -89,6 +116,18 @@ const Deposit = () => {
               <h4 className="name">Bank Name:</h4>
               <h4>{copyText.bank}</h4>
               <FiCopy onClick={handleCopy4} style={{ cursor: 'pointer' }} />
+            </div>
+
+             <div className="details">
+              <h4 className="name">Account Phone Number:</h4>
+              <h4>{copyText.phone}</h4>
+              <FiCopy onClick={handleCopy5} style={{ cursor: 'pointer' }} />
+            </div>
+
+             <div className="details">
+              <h4 className="name">Routing Number:</h4>
+              <h4>{copyText.routingNumber}</h4>
+              <FiCopy onClick={handleCopy6} style={{ cursor: 'pointer' }} />
             </div>
 
             <div className="details">
